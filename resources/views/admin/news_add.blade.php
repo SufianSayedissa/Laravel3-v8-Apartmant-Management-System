@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Admin Add Menu')
-@section('description','Add Menu Form')
+@section('title','Add News')
+@section('description','Add News Form')
 @section('keywords','')
 
 
@@ -9,7 +9,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Add Menu</h3>
+                    <h3>Add News</h3>
                 </div>
 
                 <div class="title_right">
@@ -23,7 +23,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Add Menu Form</h2>
+                            <h2>Add News Form</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -33,19 +33,8 @@
                                 <div class="clearfix"></div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal" action="{{route('admin_menu_create')}}" >
+                                    <form class="form-horizontal" action="{{route('admin_news_store')}}" method="post" >
                                     @csrf
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Parent</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select name="parent_id" class="form-control">
-                                                    <option value="0">Main Menu</option>
-                                                    @foreach($datalist as $rs)
-                                                    <option value="{{$rs->parent_id}}">{{$rs->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Title</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
@@ -62,6 +51,28 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input type="text" class="form-control" name="description" placeholder="description">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Menu</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select name="menu_id" class="form-control">
+                                                    @foreach($datalist as $rs)
+                                                    <option value="{{$rs->menu_id}}">{{$rs->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Details</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" name="details" placeholder="details">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" name="type" placeholder="type">
                                             </div>
                                         </div>
 

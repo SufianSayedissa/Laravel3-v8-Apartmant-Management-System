@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{route('admin_home')}}" class="site_title"><i class="fa fa-paw"></i></a>
+            <a href="{{route('admin_home')}}" class="site_title"><i class="fa fa-home"></i></a>
         </div>
 
         <div class="clearfix"></div>
@@ -12,7 +12,7 @@
                 <img src="{{asset('assets')}}/admin/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                @auth
+               @auth
                     <a href="#">{{Auth::user()->name}} </a>
                     <a href="{{route('admin_logout')}}">Logout</a>
                 @endauth
@@ -27,8 +27,11 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{route('admin_menu')}}"><i class="fa fa-edit"></i> Menu</a>
+                    <li><a href="{{route('admin_menu')}}"><i class="fa fa-list"></i> Menu</a>
                     </li>
+                    <li><a href="{{route('admin_news')}}"><i class="fa fa-newspaper-o"></i> News</a>
+                    </li>
+
                     <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="general_elements.html">General Elements</a></li>
