@@ -36,53 +36,41 @@
                                     <form class="form-horizontal" action="{{route('admin_menu_create')}}" >
                                     @csrf
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Parent</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <label>Parent</label>
                                                 <select name="parent_id" class="form-control">
                                                     <option value="0">Main Menu</option>
                                                     @foreach($datalist as $rs)
                                                     <option value="{{$rs->parent_id}}">{{$rs->title}}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Title</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <label>Title</label>
                                                 <input type="text" class="form-control" name="title" placeholder="Title">
-                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Keywords</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <label>Keywords</label>
                                                 <input type="text" class="form-control" name="keywords" placeholder="keywords">
-                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <label>Description</label>
                                                 <input type="text" class="form-control" name="description" placeholder="description">
-                                            </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <label>Status</label>
                                                 <select name="status" class="form-control">
                                                     <option>Choose option</option>
                                                     <option>False</option>
                                                     <option>True</option>
                                                 </select>
-                                            </div>
                                         </div>
 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
-                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                                 <button type="button" class="btn btn-primary">Cancel</button>
                                                 <button type="reset" class="btn btn-primary">Reset</button>
                                                 <button type="submit" class="btn btn-success">Add</button>
-                                            </div>
                                         </div>
 
                                     </form>

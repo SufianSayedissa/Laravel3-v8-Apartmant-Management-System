@@ -35,14 +35,14 @@
                                         <th>Id</th>
                                         <th>Title</th>
                                         <th>Keywords</th>
-                                        <th>Description</th>
                                         <th>Image</th>
                                         <th>Menu</th>
-                                        <th>Details</th>
                                         <th>Type</th>
-                                        <th>Status</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th>Action<ul>
+                                                <li>Edit</li>
+                                                <li>Delete</li>
+                                            </ul></th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -51,13 +51,10 @@
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
                                         <td>{{$rs->keywords}}</td>
-                                        <td>{{$rs->description}}</td>
                                         <td>{{$rs->image}}</td>
                                         <td>{{$rs->menu_id}}</td>
-                                        <td>{{$rs->details}}</td>
                                         <td>{{$rs->type}}</td>
-                                        <td>{{$rs->status}}</td>
-                                        <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">Edit</a></td>
+                                        <td><ul></ul><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">Edit</a></td>
                                         <td><a href="{{route('admin_news_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">Delete</a></td>
                                     </tr>
                                     @endforeach
