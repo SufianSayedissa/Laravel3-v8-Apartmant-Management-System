@@ -38,11 +38,8 @@
                                         <th>Image</th>
                                         <th>Menu</th>
                                         <th>Type</th>
-                                        <th>Action<ul>
-                                                <li>Edit</li>
-                                                <li>Delete</li>
-                                            </ul></th>
-
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -51,10 +48,14 @@
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
                                         <td>{{$rs->keywords}}</td>
-                                        <td>{{$rs->image}}</td>
+                                        <td>
+                                            @if($rs->image)
+                                                <img src="{{Storage::url($rs->image)}}" height="50" width="50" alt="">
+                                        @endif
+                                        </td>
                                         <td>{{$rs->menu_id}}</td>
                                         <td>{{$rs->type}}</td>
-                                        <td><ul></ul><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">Edit</a></td>
+                                        <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">Edit</a></td>
                                         <td><a href="{{route('admin_news_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">Delete</a></td>
                                     </tr>
                                     @endforeach

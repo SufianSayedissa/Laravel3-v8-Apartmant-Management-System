@@ -35,7 +35,7 @@
                                 <div class="clearfix"></div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal" action="{{route('admin_news_update',['id'=>$data->id])}}" method="post" >
+                                    <form class="form-horizontal" action="{{route('admin_news_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                         <div class="form-group">
                                             <label>Title</label>
@@ -78,8 +78,13 @@
                                                     <option>True</option>
                                                 </select>
                                         </div>
-
-                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input type="file" class="form-control" value="{{$data->image}}" name="image">
+                                            @if($data->image)
+                                                <img src="{{Storage::url($data->image)}}" height="50" width="50" alt="">
+                                            @endif
+                                        </div>
                                         <div class="form-group">
                                                 <button type="submit" class="btn btn-success">Update</button>
                                         </div>
