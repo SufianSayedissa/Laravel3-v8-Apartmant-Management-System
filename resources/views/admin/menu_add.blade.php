@@ -33,7 +33,7 @@
                                 <div class="clearfix"></div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal" action="{{route('admin_menu_create')}}" >
+                                    <form class="form-horizontal" action="{{route('admin_menu_create')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                         <div class="form-group">
                                             <label>Parent</label>
@@ -64,6 +64,10 @@
                                                     <option>False</option>
                                                     <option>True</option>
                                                 </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input type="file" class="form-control" name="image" >
                                         </div>
 
                                         <div class="ln_solid"></div>

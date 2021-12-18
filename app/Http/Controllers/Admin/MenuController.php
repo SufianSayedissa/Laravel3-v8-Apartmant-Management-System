@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -27,14 +30,23 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        DB::table('menus')->insert([
+        $data = new Menu();
+        $data->parent_id = $request->input('parent_id');
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        $data->status = $request->input('status');
+        $data->image =Storage::putFile('/public/images',$request->file('image'));
+        $data->save();
+        return redirect()->route('admin_menu');
+        /**DB::table('menus')->insert([
             'parent_id'=>$request->input('parent_id'),
             'title'=>$request->input('title'),
             'keywords'=>$request->input('keywords'),
             'description'=>$request->input('description'),
-            'status'=>$request->input('status')
+            'status'=>$request->input('status'),
         ]);
-        return redirect()->route('admin_menu');
+        return redirect()->route('admin_menu');**/
 
     }
 
@@ -101,6 +113,7 @@ class MenuController extends Controller
         $data->keywords =$request->input('keywords');
         $data->description =$request->input('description');
         $data->status =$request->input('status');
+        $data->image =Storage::putFile('/public/images',$request->file('image'));
         $data->save();
 
         return redirect()->route('admin_menu');
