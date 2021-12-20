@@ -36,18 +36,9 @@ class MenuController extends Controller
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
         $data->status = $request->input('status');
-        $data->image =Storage::putFile('/public/images',$request->file('image'));
+        $data->image =Storage::putFile('images',$request->file('image'));
         $data->save();
         return redirect()->route('admin_menu');
-        /**DB::table('menus')->insert([
-            'parent_id'=>$request->input('parent_id'),
-            'title'=>$request->input('title'),
-            'keywords'=>$request->input('keywords'),
-            'description'=>$request->input('description'),
-            'status'=>$request->input('status'),
-        ]);
-        return redirect()->route('admin_menu');**/
-
     }
 
 
@@ -113,7 +104,10 @@ class MenuController extends Controller
         $data->keywords =$request->input('keywords');
         $data->description =$request->input('description');
         $data->status =$request->input('status');
-        $data->image =Storage::putFile('/public/images',$request->file('image'));
+        if ($request->file('image')!=null)
+        {
+            $data->image =Storage::putFile('images',$request->file('image'));
+        }
         $data->save();
 
         return redirect()->route('admin_menu');

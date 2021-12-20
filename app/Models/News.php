@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use HasFactory;
+
+    Public function menu()
+    {
+        return $this->belongsTo(Menu::class,'menu_id');
+    }
 }

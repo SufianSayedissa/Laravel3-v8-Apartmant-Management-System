@@ -30,7 +30,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::post('menu/update/{id}', [\App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin_menu_update');
     Route::get('menu/delete/{id}', [\App\Http\Controllers\Admin\MenuController::class,'destroy'])->name('admin_menu_delete');
     Route::get('menu/show', [\App\Http\Controllers\Admin\MenuController::class,'show'])->name('admin_menu_show');
-
+//NEWS
     Route::prefix('news')->group(function (){
         Route::get('/',[\App\Http\Controllers\Admin\NewsController::class,'index'])->name('admin_news');
         Route::get('create',[\App\Http\Controllers\Admin\NewsController::class,'create'])->name('admin_news_add');
@@ -40,9 +40,22 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\NewsController::class,'destroy'])->name('admin_news_delete');
         Route::get('show',[\App\Http\Controllers\Admin\NewsController::class,'show'])->name('admin_news_show');
     });
+
+//NEWS IMAGE GALLERY
+    Route::prefix('image')->group(function (){
+        Route::get('create/{news_id}',[\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
+        Route::post('store/{news_id}',[\App\Http\Controllers\Admin\ImageController::class,'store'])->name('admin_image_store');
+        Route::get('delete/{id}/{news_id}',[\App\Http\Controllers\Admin\ImageController::class,'destroy'])->name('admin_image_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\ImageController::class,'show'])->name('admin_image_show');
+    });
+
+    //SETTING
+    Route::get('setting',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
+    Route::post('setting/update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
+
 });
 
-//NEWS
+
 
 
 Route::get('/admin/login',[HomeController::class,'login'])->name('admin_login');

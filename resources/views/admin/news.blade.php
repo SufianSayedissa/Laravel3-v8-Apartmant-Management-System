@@ -36,10 +36,11 @@
                                         <th>Title</th>
                                         <th>Keywords</th>
                                         <th>Image</th>
+                                        <th>Image Gallery</th>
                                         <th>Menu</th>
                                         <th>Type</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th style="..."colspan="2">Actions</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -50,13 +51,17 @@
                                         <td>{{$rs->keywords}}</td>
                                         <td>
                                             @if($rs->image)
-                                                <img src="{{Storage::url($rs->image)}}" height="50" width="50" alt="">
+                                                <center><img src="{{Storage::url($rs->image)}}" height="50" width="50" alt=""></center>
                                         @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin_image_add',['news_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>
                                         <td>{{$rs->menu_id}}</td>
                                         <td>{{$rs->type}}</td>
-                                        <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_news_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">Delete</a></td>
+                                        <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">
+                                                <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
+                                        <td><a href="{{route('admin_news_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>

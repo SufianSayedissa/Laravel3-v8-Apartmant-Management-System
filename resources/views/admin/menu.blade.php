@@ -39,8 +39,8 @@
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Image</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th style="..."colspan="2">Actions</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -55,8 +55,9 @@
                                         <td>@if($rs->image)
                                                 <img src="{{Storage::url($rs->image)}}" height="50" width="50" alt="">
                                             @endif</td>
-                                        <td><a href="{{route('admin_menu_edit', ['id'=>$rs->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_menu_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">Delete</a></td>
+                                        <td><a href="{{route('admin_menu_edit', ['id'=>$rs->id])}}"> <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
+                                        <td><a href="{{route('admin_menu_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">
+                                                <center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>

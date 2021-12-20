@@ -42,7 +42,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new News();
+        $data = new News;
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
@@ -50,7 +50,7 @@ class NewsController extends Controller
         $data->user_id = Auth::id();
         $data->details = $request->input('details');
         $data->status = $request->input('status');
-        $data->image =Storage::putFile('/public/images',$request->file('image'));
+        $data->image =Storage::putFile('images',$request->file('image'));
         $data->save();
         return redirect()->route('admin_news');
     }
@@ -96,7 +96,10 @@ class NewsController extends Controller
         $data->user_id = Auth::id();
         $data->details = $request->input('details');
         $data->status = $request->input('status');
-        $data->image =Storage::putFile('/public/images',$request->file('image'));
+        if ($request->file('image')!=null)
+        {
+            $data->image =Storage::putFile('images',$request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_news');
     }
@@ -109,7 +112,7 @@ class NewsController extends Controller
      */
     public function destroy(News $news, $id)
     {
-       // DB::table('news')->where('id','=', $id)->delete();
+
        $data =News::find($id);
        $data->delete();
        return redirect()->route('admin_news');

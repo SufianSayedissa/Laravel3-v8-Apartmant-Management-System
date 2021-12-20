@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Image</label>
-                                            <input type="file" class="form-control" value="{{$data->image}}" name="image">
+                                            <input type="file" class="form-control"  name="image">
                                             @if($data->image)
                                                 <img src="{{Storage::url($data->image)}}" height="50" width="50" alt="">
                                             @endif
