@@ -11,13 +11,6 @@
 @section('content')
 
 <div class="container pt-5 mb-5">
-    <div class="row">
-        <div class="col-lg-4">
-            <h2 class="section-title-underline">
-                <span>Academics History</span>
-            </h2>
-        </div>
-    </div>
 </div>
 <div class="site-section">
     <div class="container">

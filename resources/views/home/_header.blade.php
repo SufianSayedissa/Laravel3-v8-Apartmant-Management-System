@@ -1,8 +1,4 @@
-@php
-    $setting = \App\Http\Controllers\HomeController::getsetting()
-@endphp
 <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="site-logo">

@@ -63,7 +63,7 @@
                     <a href="/register" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
                     @endguest
                     <ul class="dropdown-menu">
-                        <li><a href="#">My Account</a></li>
+                        <li><a href="{{route('myprofile')}}">My Account</a></li>
                         <li><a href="#">My Requests</a></li>
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>
