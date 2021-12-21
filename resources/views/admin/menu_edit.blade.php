@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label>Parent</label>
                                                 <select name="parent_id" class="form-control">
-                                                    <option value="0">Main Menu</option>
+                                                    <option value="0" selected="selected">Main Menu</option>
                                                     @foreach($datalist as $rs)
                                                     <option value="{{$rs->id}}" @if($rs->id == $data->parent_id) selected="selected" @endif>{{$rs->title}}</option>
                                                     @endforeach

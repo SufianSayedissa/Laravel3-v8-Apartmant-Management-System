@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label>Parent</label>
                                                 <select name="parent_id" class="form-control">
-                                                    <option value="0">Main Menu</option>
+                                                    <option value="0" selected="selected">Main Menu</option>
                                                     @foreach($datalist as $rs)
                                                     <option value="{{$rs->parent_id}}">{{$rs->title}}</option>
                                                     @endforeach
@@ -69,12 +69,9 @@
                                             <label>Image</label>
                                             <input type="file" class="form-control" name="image" >
                                         </div>
-
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
-                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                <button type="reset" class="btn btn-primary">Reset</button>
-                                                <button type="submit" class="btn btn-success">Add</button>
+                                            <button type="submit" class="btn btn-success">Add</button>
                                         </div>
 
                                     </form>

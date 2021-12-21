@@ -34,8 +34,8 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Title</th>
-                                        <th>Keywords</th>
                                         <th>Image</th>
+                                        <th>Keywords</th>
                                         <th>Image Gallery</th>
                                         <th>Menu</th>
                                         <th>Type</th>
@@ -48,6 +48,7 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
+                                        <td>{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->title)}}</td>
                                         <td>{{$rs->keywords}}</td>
                                         <td>
                                             @if($rs->image)
@@ -57,7 +58,6 @@
                                         <td>
                                             <a href="{{route('admin_image_add',['news_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>
-                                        <td>{{$rs->menu_id}}</td>
                                         <td>{{$rs->type}}</td>
                                         <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">
                                                 <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>

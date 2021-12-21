@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Smtp Password</label>
-                                            <input type="password" class="form-control" value="{{$data->smtpemail}}" name="smtpemail" >
+                                            <input type="password" class="form-control" value="{{$data->smtppassword}}" name="smtppassword" >
                                         </div>
                                         <div class="form-group">
                                             <label>Smtp Port</label>

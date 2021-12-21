@@ -53,8 +53,20 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 text-right">
-                    <a href="login.html" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
-                    <a href="register.html" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                    @auth
+                    <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                        <strong class="text-uppercase"><img src="{{asset('assets')}}/images/user.png" width="35" height="35">{{Auth::user()->name}} <i class="fa fa-caret-down"></i></strong>
+                    </div>
+                    @endauth
+                    @guest
+                    <a href="/login" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
+                    <a href="/register" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                    @endguest
+                    <ul class="dropdown-menu">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">My Requests</a></li>
+                        <li><a href="{{route('logout')}}">Logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
 @extends('layouts.home')
-@section('title','Laravel Apartment site')
+@section('title',$setting->title)
 @section('description')
-    The Best Apartment Management System
+    {{$setting->description}}
 @endsection
 
-@section('keywords','')
+@section('keywords',$setting->keywords)
 
 
 
