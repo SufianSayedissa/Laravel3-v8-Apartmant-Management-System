@@ -12,20 +12,17 @@
                         <li class="active">
                             <a href="{{route('home')}}" class="nav-link text-left">Home</a>
                         </li>
+                        @foreach($menus as $rs)
                         <li class="has-children">
-                            <a href="{{route('news')}}" class="nav-link text-left">News</a>
+                            <a href="{{route(strtolower($rs->title))}}" class="nav-link text-left">{{$rs->title}}</a>
                             <ul class="dropdown">
-                                <li><a href="teachers.html">Our Teachers</a></li>
-                                <li><a href="about.html">Our School</a></li>
+                                @foreach($rs->children as $rs)
+                                <li><a href="#">{{$rs->title}}</a></li>
+
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="has-children">
-                            <a href="{{route('announcements')}}" class="nav-link text-left">Announcements</a>
-                            <ul class="dropdown">
-                                <li><a href="teachers.html">Our Teachers</a></li>
-                                <li><a href="about.html">Our School</a></li>
-                            </ul>
-                        </li>
+                        @endforeach
                         <li>
                             <a href="{{route('aboutus')}}" class="nav-link text-left">About Us</a>
                         </li>

@@ -40,7 +40,7 @@
                                                 <select name="parent_id" class="form-control">
                                                     <option value="0" selected="selected">Main Menu</option>
                                                     @foreach($datalist as $rs)
-                                                    <option value="{{$rs->parent_id}}">{{$rs->title}}</option>
+                                                    <option value="{{$rs->parent_id}}">{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs,$rs->title)}}</option>
                                                     @endforeach
                                                 </select>
                                         </div>

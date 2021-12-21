@@ -14,7 +14,7 @@
             <div class="profile_info">
                @auth
                     <a href="#">{{Auth::user()->name}} </a>
-                    <a href="{{route('admin_logout')}}">Logout</a>
+                    <a href="{{route('logout')}}">Logout</a>
                 @endauth
             </div>
         </div>

@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
-    protected $appends=[
-        'parent'
-    ];
-
+//    protected $appends=[
+//        'parent'
+//    ];
 
 # One To Many
     Public function news()
@@ -24,6 +23,7 @@ class Menu extends Model
     {
         return $this->belongsTo(Menu::class,'parent_id');
     }
+
 
     # One To Many
     public function children()

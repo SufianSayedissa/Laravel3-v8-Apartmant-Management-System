@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @include('home._header')
 @yield('css')
