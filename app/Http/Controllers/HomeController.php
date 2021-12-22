@@ -33,28 +33,33 @@ class HomeController extends Controller
 
     public function news()
     {
-        return view('home.news');
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.news',['menus' => $menus]);
     }
 
     public function announcements()
     {
-        return view('home.announcements');
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.announcements',['menus' => $menus]);
     }
 
     public function aboutus()
     {
         $setting = Setting::first();
-        return view('home.aboutus', ['setting' => $setting]);
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.aboutus', ['setting' => $setting,'menus' => $menus]);
     }
 
     public function fag()
     {
-        return view('home.fag');
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.fag',['menus' => $menus]);
     }
 
     public function contact()
     {
-        return view('home.contact');
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.contact',['menus' => $menus]);
     }
 
     public function login()

@@ -34,10 +34,10 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Title</th>
+                                        <th>Menu</th>
                                         <th>Image</th>
                                         <th>Keywords</th>
                                         <th>Image Gallery</th>
-                                        <th>Menu</th>
                                         <th>Type</th>
                                         <th style="..."colspan="2">Actions</th>
 
@@ -48,18 +48,20 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
-                                        <td>{{$rs->keywords}}</td>
+                                        <td>
+                                            {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
+                                        </td>
                                         <td>
                                             @if($rs->image)
                                                 <center><img src="{{Storage::url($rs->image)}}" height="50" width="50" alt=""></center>
-                                        @endif
+                                            @endif
                                         </td>
+                                        <td>{{$rs->keywords}}</td>
+
                                         <td>
                                             <a href="{{route('admin_image_add',['news_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>
-                                      <td>
-                                      {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
-                                      </td>
+
                                         <td>{{$rs->type}}</td>
                                         <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">
                                                 <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>

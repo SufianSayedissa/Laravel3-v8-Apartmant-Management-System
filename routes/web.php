@@ -33,6 +33,7 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
     Route::get('/',[UserController::class,'index'])->name('myprofile');
 });
 
+
 // Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
 

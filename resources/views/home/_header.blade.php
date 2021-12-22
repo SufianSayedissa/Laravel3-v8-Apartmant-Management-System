@@ -1,9 +1,12 @@
+@php
+    $menus= \App\Http\Controllers\HomeController::menulist()
+@endphp
 <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="site-logo">
                 <a href="{{route('home')}}" class="d-block">
-                    <img src="{{asset('assets')}}/images/logo.jpg" alt="Image" class="img-fluid">
+                    <img src="{{asset('assets')}}/images/logo41.jpg" height="180"width="180" alt="Image" class="img-fluid">
                 </a>
             </div>
             <div class="mr-auto">
@@ -14,7 +17,8 @@
                         </li>
                         @foreach($menus as $rs)
                         <li class="has-children">
-                            <a href="{{route(strtolower($rs->title))}}" class="nav-link text-left">{{$rs->title}}</a>
+                            {{--{{route(strtolower($rs->title))--}}
+                            <a href="#" class="nav-link text-left">{{$rs->title}}</a>
                             <ul class="dropdown">
                                 @foreach($rs->children as $rs)
                                 <li><a href="#">{{$rs->title}}</a></li>
