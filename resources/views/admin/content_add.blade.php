@@ -47,6 +47,7 @@
                                                 <option>Choose option</option>
                                                 <option>News</option>
                                                 <option>Announcements</option>
+                                                <option>Menu</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

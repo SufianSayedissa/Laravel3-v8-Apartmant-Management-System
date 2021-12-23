@@ -27,10 +27,10 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($news_id)
+    public function create($content_id)
     {
-        $data = Content::find($news_id);
-        $images = DB::table('images')->where('news_id','=',$news_id)->get();
+        $data = Content::find($content_id);
+        $images = DB::table('images')->where('content_id','=',$content_id)->get();
         return view('admin.image_add',['data'=>$data,'images'=>$images]);
     }
 
@@ -40,17 +40,17 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$news_id)
+    public function store(Request $request,$content_id)
     {
         $data = new Image;
         $data->title = $request->input('title');
-        $data->news_id =$news_id;
+        $data->content_id =$content_id;
         if ($request->file('image')!=null)
         {
             $data->image =Storage::putFile('images',$request->file('image'));
         }
         $data->save();
-        return redirect()->route('admin_image_add',['news_id'=>$news_id]);
+        return redirect()->route('admin_image_add',['content_id'=>$content_id]);
     }
 
     /**
@@ -93,10 +93,10 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image, $id, $news_id)
+    public function destroy(Image $image, $id, $content_id)
     {
         $data = Image::find($id);
         $data->delete();
-        return redirect()->route('admin_image_add',['news_id'=>$news_id]);
+        return redirect()->route('admin_image_add',['content_id'=>$content_id]);
     }
 }

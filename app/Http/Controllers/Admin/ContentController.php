@@ -49,6 +49,7 @@ class ContentController extends Controller
         $data->menu_id = $request->input('menu_id');
         $data->user_id = Auth::id();
         $data->details = $request->input('details');
+        $data->type = $request->input('type');
         $data->status = $request->input('status');
         $data->image =Storage::putFile('images',$request->file('image'));
         $data->save();
@@ -95,6 +96,7 @@ class ContentController extends Controller
         $data->menu_id = $request->input('menu_id');
         $data->user_id = Auth::id();
         $data->details = $request->input('details');
+        $data->type = $request->input('type');
         $data->status = $request->input('status');
         if ($request->file('image')!=null)
         {

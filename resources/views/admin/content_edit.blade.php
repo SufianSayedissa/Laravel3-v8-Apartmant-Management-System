@@ -42,6 +42,15 @@
                                                 <input type="text" class="form-control" value="{{$data->title}}" name="title" placeholder="Title">
                                         </div>
                                         <div class="form-group">
+                                            <label>Type</label>
+                                            <select name="type"  class="form-control">
+                                                <option selected="selected">{{$data->type}}</option>
+                                                <option>News</option>
+                                                <option>Announcements</option>
+                                                <option>Menu</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Keywords</label>
                                                 <input type="text" class="form-control" value="{{$data->keywords}}" name="keywords" placeholder="keywords">
                                         </div>
@@ -67,14 +76,7 @@
                                                 ClassicEditor.create(document.getElementById('text_editor'));
                                             </script>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Type</label>
-                                            <select name="type"  class="form-control">
-                                                <option selected="selected">{{$data->type}}</option>
-                                                <option>False</option>
-                                                <option>True</option>
-                                            </select>
-                                        </div>
+
 
                                         <div class="form-group">
                                             <label>Status</label>

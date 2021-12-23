@@ -48,7 +48,7 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
-                                        <td>{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}</td>
+                                        <td>{{$rs->type}}</td>
                                         <td>
                                             {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
                                         </td>
@@ -62,7 +62,6 @@
                                         <td>
                                             <a href="{{route('admin_image_add',['content_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>
-
 
                                         <td><a href="{{route('admin_content_edit', ['id'=>$rs->id])}}">
                                                 <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
