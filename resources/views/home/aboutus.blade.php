@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title','About Us')
+@section('title','About Us - '.$setting->title)
 @section('description')
     {{$setting->description}}
 @endsection
@@ -22,6 +22,7 @@
                 <h2 class="section-title-underline mb-5">
                     <span>Why {{$setting->title}}</span>
                 </h2>
+                {!!$setting->aboutus!!}
             </div>
         </div>
 
@@ -31,8 +32,9 @@
             </div>
             <div class="col-lg-5 mr-auto align-self-center order-2 order-lg-1">
                 <h2 class="section-title-underline mb-5">
-                    <span>Our Goals</span>
+                    <span>References</span>
                 </h2>
+                {!!$setting->references!!}
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\MenuController;
 use App\Models\Menu;
-use App\Models\News;
+use App\Models\Content;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,8 +58,9 @@ class HomeController extends Controller
 
     public function contact()
     {
+        $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.contact',['menus' => $menus]);
+        return view('home.contact',['setting' => $setting,'menus' => $menus]);
     }
 
     public function login()

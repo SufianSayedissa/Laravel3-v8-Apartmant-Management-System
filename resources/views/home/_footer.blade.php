@@ -1,12 +1,9 @@
+<!--        FOOTER     -->
 <div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="site-logo">
-                    <a href="{{route('home')}}" class="d-block">
-                        <img src="{{asset('assets')}}/images/logo.jpg" alt="Image" class="img-fluid">
-                    </a>
-                </div>
+                <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
                 <p><a href="#">Learn More</a></p>
             </div>
@@ -54,10 +51,13 @@
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
                     {{$setting->company}}
                 </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- END OF FOOTER     -->
+
 </div>
 <!-- .site-wrap -->
 

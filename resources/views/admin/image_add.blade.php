@@ -23,7 +23,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>News Title :{{$data->title}}</h2>
+                            <h2>Content Title :{{$data->title}}</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -33,7 +33,7 @@
                                 <div class="clearfix"></div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal" action="{{route('admin_image_store',['news_id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="{{route('admin_image_store',['content_id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                         <div class="form-group">
                                             <label>Title</label>
@@ -68,7 +68,7 @@
                                                         <center><img src="{{Storage::url($rs->image)}}" height="50" width="50" alt=""></center>
                                                     @endif
                                                 </td>
-                                                <td><a href="{{route('admin_image_delete', ['id'=>$rs->id,'news_id'=>$data->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">
+                                                <td><a href="{{route('admin_image_delete', ['id'=>$rs->id,'content_id'=>$data->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">
                                                         <center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                             </tr>
                                         @endforeach

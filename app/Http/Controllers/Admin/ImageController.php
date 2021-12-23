@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Image;
-use App\Models\News;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +29,7 @@ class ImageController extends Controller
      */
     public function create($news_id)
     {
-        $data = News::find($news_id);
+        $data = Content::find($news_id);
         $images = DB::table('images')->where('news_id','=',$news_id)->get();
         return view('admin.image_add',['data'=>$data,'images'=>$images]);
     }

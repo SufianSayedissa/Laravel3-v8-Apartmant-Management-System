@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Edit News')
-@section('description','Edit News Form')
+@section('title','Edit Content')
+@section('description','Edit Content Form')
 @section('keywords','')
 @section('javascript')
     <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
@@ -11,7 +11,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Edit News</h3>
+                    <h3>Edit Content</h3>
                 </div>
 
                 <div class="title_right">
@@ -25,7 +25,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Edit News Form</h2>
+                            <h2>Edit Content Form</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -35,7 +35,7 @@
                                 <div class="clearfix"></div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal" action="{{route('admin_news_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="{{route('admin_content_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                         <div class="form-group">
                                             <label>Title</label>
@@ -69,7 +69,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Type</label>
-                                                <input type="text" class="form-control" value="{{$data->type}}" name="type" placeholder="type">
+                                            <select name="type"  class="form-control">
+                                                <option selected="selected">{{$data->type}}</option>
+                                                <option>False</option>
+                                                <option>True</option>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','News')
-@section('description','News List')
+@section('title','Content')
+@section('description','Content List')
 @section('keywords','')
 
 
@@ -9,7 +9,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>News </h3>
+                    <h3>Content </h3>
                 </div>
 
                 <div class="title_right">
@@ -24,7 +24,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <a href="{{route('admin_news_add')}}"><button type="button" class="btn btn-success btn-lg">Add News</button></a>
+                            <a href="{{route('admin_content_add')}}"><button type="button" class="btn btn-success btn-lg">Add Content</button></a>
                         </div>
                         <br>
                         <div class="x_panel">
@@ -34,11 +34,11 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Title</th>
+                                        <th>Type</th>
                                         <th>Menu</th>
                                         <th>Image</th>
                                         <th>Keywords</th>
                                         <th>Image Gallery</th>
-                                        <th>Type</th>
                                         <th style="..."colspan="2">Actions</th>
 
                                     </tr>
@@ -48,6 +48,7 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
+                                        <td>{{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}</td>
                                         <td>
                                             {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
                                         </td>
@@ -59,13 +60,13 @@
                                         <td>{{$rs->keywords}}</td>
 
                                         <td>
-                                            <a href="{{route('admin_image_add',['news_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
+                                            <a href="{{route('admin_image_add',['content_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>
 
-                                        <td>{{$rs->type}}</td>
-                                        <td><a href="{{route('admin_news_edit', ['id'=>$rs->id])}}">
+
+                                        <td><a href="{{route('admin_content_edit', ['id'=>$rs->id])}}">
                                                 <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
-                                        <td><a href="{{route('admin_news_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
+                                        <td><a href="{{route('admin_content_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>

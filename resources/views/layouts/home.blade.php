@@ -47,38 +47,18 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-
-
-    <div class="py-2 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3 text-right">
-                    @auth
-                    <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
-                        <strong class="text-uppercase"><img src="{{asset('assets')}}/images/user.png" width="35" height="35">{{Auth::user()->name}} <i class="fa fa-caret-down"></i></strong>
-                    </div>
-                    @endauth
-                    @guest
-                    <a href="/login" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
-                    <a href="/register" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
-                    @endguest
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('myprofile')}}">My Account</a></li>
-                        <li><a href="#">My Requests</a></li>
-                        <li><a href="{{route('logout')}}">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
+</div>
+<div class="site-logo">
+    <a href="{{route('home')}}" class="d-block">
+        <img src="{{asset('assets')}}/images/logo41.jpg" height="180"width="250" alt="Image" class="img-fluid">
+    </a>
+</div>
 
 @include('home._header')
 @yield('css')
 @yield('headerjs')
 
 @section('content')
-    content area
     @show
 
 @include('home._footer')

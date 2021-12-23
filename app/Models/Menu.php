@@ -15,7 +15,7 @@ class Menu extends Model
 # One To Many
     Public function news()
     {
-        return $this->hasMany(News::class);
+        return $this->hasMany(Content::class);
     }
 
 # One To Many Inverse

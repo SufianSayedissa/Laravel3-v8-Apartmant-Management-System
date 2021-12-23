@@ -29,7 +29,7 @@
                 <ul class="nav side-menu">
                     <li><a href="{{route('admin_menu')}}"><i class="fa fa-list"></i> Menu</a>
                     </li>
-                    <li><a href="{{route('admin_news')}}"><i class="fa fa-newspaper-o"></i> News</a>
+                    <li><a href="{{route('admin_content')}}"><i class="fa fa-newspaper-o"></i> Content</a>
                     </li>
 
                     <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

@@ -13,7 +13,7 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('content', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->String('title',150);
             $table->String('keywords')->nullable();

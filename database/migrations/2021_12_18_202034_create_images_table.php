@@ -15,7 +15,7 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->Integer('news_id')->nullable();
+            $table->Integer('content_id')->nullable();
             $table->String('title',150);
             $table->string('image',75)->nullable();
             $table->timestamps();

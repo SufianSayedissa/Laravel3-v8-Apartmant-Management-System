@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use App\Models\News;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +51,10 @@ class MenuController extends Controller
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
         $data->status = $request->input('status');
-        $data->image =Storage::putFile('images',$request->file('image'));
+        if ($request->file('image')!=null)
+        {
+            $data->image =Storage::putFile('images',$request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_menu');
     }
