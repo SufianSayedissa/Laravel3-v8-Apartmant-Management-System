@@ -28,6 +28,7 @@ Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/fag',[HomeController::class,'fag'])->name('fag');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmessage');
+Route::get('/contentslider/{id}',[HomeController::class,'contentslider'])->name('content');
 
 
 //Home User

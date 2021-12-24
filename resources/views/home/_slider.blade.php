@@ -1,22 +1,20 @@
 <div class="hero-slide owl-carousel site-blocks-cover">
-    <div class="intro-section" style="background-image: url('//assets/images/hero_1.jpg');">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>Academics University</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="intro-section" style="background-image: url('//assets/images/hero_1.jpg');">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>You Can Learn Anything</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @php
+        $i =0;
+    @endphp
+    @foreach($slider as $rs)
+        @php
+            $i =+1;
+        @endphp
+         <div class="intro-section @if($i==1)active @endif" style="background-image: url({{Storage::url($rs->image)}});">
+             <div class="container">
+                 <div class="row align-items-center">
+                     <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+                             <a href="{{route('content',['id'=>$rs->id])}}"><h1>{{$rs->title}}</h1></a>
+                    </div>
+                 </div>
+             </div>
+         </div>
+    @endforeach
 </div>
+

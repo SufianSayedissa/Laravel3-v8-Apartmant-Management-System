@@ -28,7 +28,15 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.index', ['setting' => $setting, 'menus' => $menus]);
+        $slider = Content::select('id','title','image')->limit(4)->get();
+        return view('home.index',['setting' => $setting,'menus' => $menus,'slider' => $slider]);
+
+    }
+    public function contentslider($id)
+    {
+        $data = Content::find($id);
+        print_r($data);
+        exit();
 
     }
 
@@ -66,9 +74,6 @@ class HomeController extends Controller
     public function sendmessage(Request $request)
     {
 
-        //$setting = Setting::first();
-        //$menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        //return view('home.contact',['setting' => $setting,'menus' => $menus]);
         $data = new Message();
         $data->name = $request->input('name');
         $data->email = $request->input('email');
