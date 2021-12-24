@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Admin\MenuController;
 use App\Models\Menu;
 use App\Models\Content;
+use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,10 +32,10 @@ class HomeController extends Controller
 
     }
 
-    public function news()
+    public function content()
     {
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.news',['menus' => $menus]);
+        return view('home.content',['menus' => $menus]);
     }
 
     public function announcements()
@@ -61,6 +62,22 @@ class HomeController extends Controller
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
         return view('home.contact',['setting' => $setting,'menus' => $menus]);
+    }
+    public function sendmessage(Request $request)
+    {
+
+        //$setting = Setting::first();
+        //$menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        //return view('home.contact',['setting' => $setting,'menus' => $menus]);
+        $data = new Message();
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->save();
+        return redirect()->route('contact')->with('success','Your Message Has Been Sent, Thanks.');
+
     }
 
     public function login()

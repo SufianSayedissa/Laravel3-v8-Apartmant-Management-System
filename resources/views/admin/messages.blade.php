@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Content')
-@section('description','Content List')
+@section('title','Contact Messages')
+@section('description','Contact Messages List')
 @section('keywords','')
 
 
@@ -9,7 +9,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Content </h3>
+                    <h3>Messages </h3>
                 </div>
 
                 <div class="title_right">
@@ -24,7 +24,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <a href="{{route('admin_content_add')}}"><button type="button" class="btn btn-success btn-lg">Add Content</button></a>
+                            @include('home.message')
                         </div>
                         <br>
                         <div class="x_panel">
@@ -33,13 +33,13 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Title</th>
-                                        <th>Type</th>
-                                        <th>Menu</th>
-                                        <th>Image</th>
-                                        <th>Keywords</th>
-                                        <th>Image Gallery</th>
-                                        <th style="..."colspan="2">Actions</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Admin Note</th>
+                                        <th style="..."colspan="3">Actions</th>
 
                                     </tr>
                                     </thead>
@@ -47,26 +47,21 @@
                                     @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{$rs->id}}</td>
-                                        <td>{{$rs->title}}</td>
-                                        <td>{{$rs->type}}</td>
+                                        <td>{{$rs->name}}</td>
+                                        <td>{{$rs->email}}</td>
+                                        <td>{{$rs->phone}}</td>
+                                        <td>{{$rs->subject}}</td>
+                                        <td>{{$rs->message}}</td>
+                                        <td>{{$rs->note}}</td>
+                                        <td>{{$rs->status}}</td>
                                         <td>
-                                            {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
+                                            <a href="{{route('admin_message_edit',['id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')">
+                                                <center><img src="{{asset('assets')}}/admin/images/edit.png"height="40" width="40"></center></a>
                                         </td>
                                         <td>
-                                            @if($rs->image)
-                                                <center><img src="{{Storage::url($rs->image)}}" height="50" width="50" alt=""></center>
-                                            @endif
+                                            <a href="{{route('admin_message_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">
+                                                <center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a>
                                         </td>
-                                        <td>{{$rs->keywords}}</td>
-
-                                        <td>
-                                            <a href="{{route('admin_image_add',['content_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
-                                        </td>
-
-
-                                        <td><a href="{{route('admin_content_edit', ['id'=>$rs->id])}}">
-                                                <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
-                                        <td><a href="{{route('admin_content_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>

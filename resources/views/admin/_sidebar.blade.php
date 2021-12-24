@@ -31,6 +31,8 @@
                     </li>
                     <li><a href="{{route('admin_content')}}"><i class="fa fa-newspaper-o"></i> Content</a>
                     </li>
+                    <li><a href="{{route('admin_message')}}"><i class="fa fa-send"></i> Contact Messages</a>
+                    </li>
 
                     <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
