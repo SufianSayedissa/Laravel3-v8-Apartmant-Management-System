@@ -14,7 +14,7 @@
                         <li class="has-children">
                             {{--{{route(strtolower($rs->title))--}}
                             <a href="#" class="nav-link text-left">{{$rs->title}}</a>
-                            <ul class="dropdown">
+                            <ul class="dropdown" aria-expanded="true">
                                 @foreach($rs->children as $rs)
                                 <li><a href="#">{{$rs->title}}</a></li>
                                 @endforeach

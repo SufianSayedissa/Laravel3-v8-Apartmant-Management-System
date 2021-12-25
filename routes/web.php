@@ -27,8 +27,14 @@ Route::get('/announcements',[HomeController::class,'announcements'])->name('anno
 Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/fag',[HomeController::class,'fag'])->name('fag');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::get('/newscontent',[HomeController::class,'newscontent'])->name('newscontent');
+Route::get('/announcementscontent',[HomeController::class,'announcementscontent'])->name('announcementscontent');
+Route::get('/contentdetail/{id}',[HomeController::class,'contentdetail'])->name('contentdetail');
 Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmessage');
 Route::get('/contentslider/{id}',[HomeController::class,'contentslider'])->name('content');
+
+
+
 
 
 //Home User

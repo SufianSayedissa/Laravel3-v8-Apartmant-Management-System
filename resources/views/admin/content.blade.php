@@ -29,6 +29,9 @@
                         <br>
                         <div class="x_panel">
                             <div class="x_content">
+                                <h2 class="section-title-underline mb-5">
+                                    <span>All News</span>
+                                </h2>
                                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
@@ -36,8 +39,8 @@
                                         <th>Title</th>
                                         <th>Type</th>
                                         <th>Menu</th>
+                                        <th>Status</th>
                                         <th>Image</th>
-                                        <th>Keywords</th>
                                         <th>Image Gallery</th>
                                         <th style="..."colspan="2">Actions</th>
 
@@ -52,13 +55,12 @@
                                         <td>
                                             {{\App\Http\Controllers\Admin\MenuController::getParentsTree($rs->menu,$rs->menu?->title)}}
                                         </td>
+                                        <td>{{$rs->status}}</td>
                                         <td>
                                             @if($rs->image)
                                                 <center><img src="{{Storage::url($rs->image)}}" height="50" width="50" alt=""></center>
                                             @endif
                                         </td>
-                                        <td>{{$rs->keywords}}</td>
-
                                         <td>
                                             <a href="{{route('admin_image_add',['content_id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')"><center><img src="{{asset('assets')}}/admin/images/gallery.png"height="40" width="40"></center></a>
                                         </td>

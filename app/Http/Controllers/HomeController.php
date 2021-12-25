@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\MenuController;
+use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Content;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Type;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,11 @@ class HomeController extends Controller
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
         $slider = Content::select('id','title','image')->limit(4)->get();
-        return view('home.index',['setting' => $setting,'menus' => $menus,'slider' => $slider]);
+        $news = Content::select('id','type','title','image','keywords','description')->where('type','News')->where('status','True')->get();
+        $lastannouncements = Content::select('id','type','title','description','image','updated_at')->where('type','Announcements')->where('status','True')->orderByDesc('updated_at')->limit(1)->get();
+        $dailyannouncements =Content::select('id','type','title','description','image','updated_at')->where('type','Announcements')->where('status','True')->limit(5)->get();
+        return view('home.index',['setting' => $setting,'menus' => $menus,'slider' => $slider,
+            'news' => $news,'lastannouncements'=>$lastannouncements,'dailyannouncements'=>$dailyannouncements]);
 
     }
     public function contentslider($id)
@@ -40,17 +46,46 @@ class HomeController extends Controller
 
     }
 
+
     public function content()
     {
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
         return view('home.content',['menus' => $menus]);
     }
 
-    public function announcements()
+
+
+
+    public function newscontent()
     {
+
+        $news = Content::select('id','type','title','image','updated_at','keywords','description')->where('type','News')->where('status','True')->get();
+        $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.announcements',['menus' => $menus]);
+
+        return view('home.news_content',['news'=>$news,'menus'=>$menus,'setting'=>$setting]);
     }
+
+
+    public function announcementscontent()
+    {
+
+        $announcements = Content::select('id','type','title','image','updated_at','keywords','description')->where('type','Announcements')->where('status','True')->get();
+        $setting = Setting::first();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.announcements_content',['announcements'=>$announcements,'menus'=>$menus,'setting'=>$setting]);
+    }
+
+    public function contentdetail($id)
+    {
+        $setting = Setting::first();
+        $data= Content::find($id);
+        $datalist = Image::where('content_id',$id)->get();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.content_detail',['data'=>$data,'menus'=>$menus,'setting'=>$setting,'datalist'=>$datalist]);
+    }
+
+
 
     public function aboutus()
     {
