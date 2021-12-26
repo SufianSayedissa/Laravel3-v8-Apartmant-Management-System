@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -25,13 +26,16 @@ Route::get('/home',[HomeController::class,'index'])->name('homepage');
 Route::get('/content',[HomeController::class,'content'])->name('content');
 Route::get('/announcements',[HomeController::class,'announcements'])->name('announcements');
 Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
-Route::get('/fag',[HomeController::class,'fag'])->name('fag');
+Route::get('/faq',[HomeController::class,'faq'])->name('faq');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/newscontent',[HomeController::class,'newscontent'])->name('newscontent');
 Route::get('/announcementscontent',[HomeController::class,'announcementscontent'])->name('announcementscontent');
 Route::get('/contentdetail/{id}',[HomeController::class,'contentdetail'])->name('contentdetail');
 Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmessage');
 Route::get('/contentslider/{id}',[HomeController::class,'contentslider'])->name('content');
+Route::post('/getcontent',[HomeController::class,'getcontent'])->name('getcontent');
+Route::get('/contentlist/{search}',[HomeController::class,'contentlist'])->name('contentlist');
+
 
 
 
@@ -85,6 +89,18 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     //SETTING
     Route::get('setting',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
     Route::post('setting/update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
+
+
+    //FAQ
+    Route::prefix('faq')->group(function (){
+        Route::get('/',[FaqController::class,'index'])->name('admin_faq');
+        Route::get('create',[FaqController::class,'create'])->name('admin_faq_add');
+        Route::post('store',[FaqController::class,'store'])->name('admin_faq_store');
+        Route::get('edit/{id}',[FaqController::class,'edit'])->name('admin_faq_edit');
+        Route::post('update/{id}',[FaqController::class,'update'])->name('admin_faq_update');
+        Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
+        Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
+    });
 
 });
 

@@ -53,6 +53,16 @@
         <img src="{{asset('assets')}}/images/logo41.jpg" height="180"width="250" alt="Image" class="img-fluid">
     </a>
 </div>
+<!-- Search -->
+<div class="form-search">
+    <form action="{{route('getcontent')}}" method="post">
+        @csrf
+        @livewire('search')
+        <button type="submit" ><i class="fa fa-search"></i></button>
+    </form>
+    @livewireScripts
+</div>
+<!-- End Of Search -->
 
 @include('home._header')
 @yield('css')

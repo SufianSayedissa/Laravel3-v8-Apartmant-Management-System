@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\MenuController;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Content;
@@ -87,6 +88,29 @@ class HomeController extends Controller
 
 
 
+    public function getcontent(Request $request)
+    {
+        $search =$request->input('search');
+        $count=Content::where('title','like','%'.$search.'%')->get()->count();
+        if ($count==1)
+        {
+        $data = Content::where('title',$request->input('search'))->first();
+        return redirect()->route('contentdetail',['id'=>$data->id]);
+        }
+        else
+        {
+            return redirect()->route('contentlist',['search'=>$search]);
+        }
+    }
+
+    public function contentlist($search)
+    {
+        $datalist=Content::where('title','like','%'.$search.'%')->get();
+        return view('home.search_contents',['datalist'=>$datalist]);
+    }
+
+
+
     public function aboutus()
     {
         $setting = Setting::first();
@@ -94,10 +118,13 @@ class HomeController extends Controller
         return view('home.aboutus', ['setting' => $setting,'menus' => $menus]);
     }
 
-    public function fag()
+    public function faq()
     {
+        $setting = Setting::first();
+
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.fag',['menus' => $menus]);
+        $datalist= Faq::all()->sortBy('id');
+        return view('home.faq',['menus' => $menus,'datalist'=>$datalist,'setting' => $setting]);
     }
 
     public function contact()

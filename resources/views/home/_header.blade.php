@@ -25,7 +25,7 @@
                             <a href="{{route('aboutus')}}" class="nav-link text-left">About Us</a>
                         </li>
                         <li>
-                            <a href="{{route('fag')}}" class="nav-link text-left">FAG</a>
+                            <a href="{{route('faq')}}" class="nav-link text-left">FAQ</a>
                         </li>
                         <li>
                             <a href="{{route('contact')}}" class="nav-link text-left">Contact</a>
