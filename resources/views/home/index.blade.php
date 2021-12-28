@@ -83,6 +83,20 @@
                                 <a href="{{route('contentdetail',['id'=>$rs->id])}}" target="_blank"><img src="{{Storage::url($rs->image)}}"style="height: 300px; width: 800px" alt="Image" class="img-fluid"></a>
                                 <a href="{{route('contentdetail',['id'=>$rs->id])}}" target="_blank">
                                 <div class="category"><h3>{{$rs->title}}</h3></div></a>
+
+                                @php
+                                $averageview = \App\Http\Controllers\HomeController::averageview($rs->id);
+                                $counterview = \App\Http\Controllers\HomeController::counterview($rs->id);
+
+                                    @endphp
+                                <div class="rating text-center mb-3">
+                                    <i class="fa fa-star @if($averageview<1) -o empty @endif"></i>
+                                    <i class="fa fa-star @if($averageview<2) -o empty @endif"></i>
+                                    <i class="fa fa-star @if($averageview<3) -o empty @endif"></i>
+                                    <i class="fa fa-star @if($averageview<4) -o empty @endif"></i>
+                                    <i class="fa fa-star @if($averageview<5) -o empty @endif"></i>
+                                    <i>({{$counterview}}) Review(s)</i>
+                                </div>
                             </figure>
                             <div class="course-1-content pb-4">
                                 <h2>{{$rs->keywords}}</h2>

@@ -25,14 +25,28 @@
                         <p>
                             <img src="{{Storage::url($rs->image)}}" alt="Image" class="img-fluid">
                         </p>
-                            @endforeach
+                          @endforeach
                         </div>
                     </div>
                     <div class="col-lg-5 ml-auto align-self-center">
                         <h2 class="section-title-underline mb-5">
                             <span>{{$data->title}}</span>
                         </h2>
+                        <div>
+                            @php
+                               $averageview = \App\Http\Controllers\HomeController::averageview($data->id);
+                                $counterview = \App\Http\Controllers\HomeController::counterview($data->id);
 
+                             @endphp
+                            <div class="rating text-center mb-3">
+                            <i class="fa fa-star @if($averageview<1)-o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<2)-o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<3)-o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<4)-o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<5)-o  empty @endif"></i>
+                             </div>
+                            <a href="#">{{$counterview}}Review(s)-{{$averageview}}</a>
+                        </div>
                         <p class="mb-5"><strong class="text-black d-block">Published Time:</strong>{{$data->updated_at}}</p>
                         <p class="mb-5"><strong class="text-black d-block">Details:</strong></p>
                         <p> {!!$data->details!!}</p>
@@ -41,49 +55,32 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
-            <h2 class="section-title-underline mb-5"><span>Write Review</span></h2>
-            @include('home.message')
-            <div class="site-section">
-                <form action="{{route('sendmessage')}}" method="post">
-                    @csrf
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-md-6 form-group">
-                                <label>Full Name</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-lg">
+        <div class="tab-pane fadeIn">
+            <div class="col-md-6">
+                <h2 class="section-title-underline mb-5"><span>Reviews</span></h2>
+                    @foreach($reviews as $rs)
+                        <div class="single">
+                            <div class="reviewing-head">
+                                <div><a href="#"><i class="fa fa-user-o"></i>{{$rs->user?->name}}</a></div>
+                                <div><a href="#"><i class="fa fa-user-o"></i>{{$rs->created_at}}</a></div>
+                                <div class="stars" >
+                                    <i class="fa fa-star @if($rs->rate<1) -o  empty @endif"></i>
+                                    <i class="fa fa-star @if($rs->rate<2) -o  empty @endif"></i>
+                                    <i class="fa fa-star @if($rs->rate<3) -o  empty @endif"></i>
+                                    <i class="fa fa-star @if($rs->rate<4) -o  empty @endif"></i>
+                                    <i class="fa fa-star @if($rs->rate<5) -o  empty @endif"></i>
+                                </div>
                             </div>
-                            <div class="col-md-6 form-group">
-                                <label for="email">Email</label>
-                                <input type="text" id="email" name="email" class="form-control form-control-lg">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Phone</label>
-                                <input type="text" id="phone" name="phone" class="form-control form-control-lg">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Subject</label>
-                                <input type="text" id="subject" name="subject" class="form-control form-control-lg">
+                            <div class="reviewing-body">
+                                <p>{{$rs->comment}}</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label>Message</label>
-                                <textarea  name="message" id="message" cols="30" rows="10" class="input"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <input type="submit" value="Send Message" class="btn btn-primary btn-lg px-5">
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    @endforeach
             </div>
+        <div class="col-md-6">
+            <h2 class="section-title-underline mb-5"><span>Write A Review</span></h2>
+                @livewire('review',['id'=>$data->id])
+        </div>
         </div>
     </div>
 </div>

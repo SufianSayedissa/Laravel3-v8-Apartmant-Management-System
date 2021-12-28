@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
+use App\Models\Review;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,8 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
         $setting = Setting::first();
-        return view('home.user_profile',['setting'=>$setting]);
+        return view('home.user_profile',['setting'=>$setting,'menus'=>$menus]);
     }
 
     /**
@@ -24,6 +28,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function myreviews()
+    {
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        $setting = Setting::first();
+        $datalist = Review::where('user_id','=',Auth::user()->id)->get();
+        return view ('home.user_reviews',['datalist'=>$datalist,'setting'=>$setting,'menus'=>$menus]);
+    }
+    public function destroymyreview( Review $review,$id)
+    {
+        $data = Review::find($id);
+        $data->delete();
+        return redirect()->back()->with('success','Review Deleted');
+    }
+
     public function create()
     {
         //

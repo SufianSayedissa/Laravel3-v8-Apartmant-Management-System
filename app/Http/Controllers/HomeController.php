@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Livewire\Review;
 use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Menu;
@@ -26,6 +27,16 @@ class HomeController extends Controller
     {
         return Setting::first();
     }
+    public static function counterview($id)
+    {
+        return \App\Models\Review::where('content_id', $id)->count();
+    }
+    public static function averageview($id)
+    {
+        return \App\Models\Review::where('content_id', $id)->average('rate');
+    }
+
+
 
     public function index()
     {
@@ -41,9 +52,12 @@ class HomeController extends Controller
     }
     public function contentslider($id)
     {
-        $data = Content::find($id);
-        print_r($data);
-        exit();
+        $setting = Setting::first();
+        $data= Content::find($id);
+        $datalist = Image::where('content_id',$id)->get();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        $reviews = Review::where('content_id',$id)->get();
+        return view('home.content_detail',['data'=>$data,'menus'=>$menus,'setting'=>$setting,'datalist'=>$datalist,'review'=>$reviews]);
 
     }
 
@@ -83,7 +97,8 @@ class HomeController extends Controller
         $data= Content::find($id);
         $datalist = Image::where('content_id',$id)->get();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.content_detail',['data'=>$data,'menus'=>$menus,'setting'=>$setting,'datalist'=>$datalist]);
+        $reviews = \App\Models\Review::where('content_id',$id)->get();
+        return view('home.content_detail',['data'=>$data,'menus'=>$menus,'setting'=>$setting,'datalist'=>$datalist,'reviews'=>$reviews]);
     }
 
 

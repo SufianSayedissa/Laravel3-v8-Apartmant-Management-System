@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::get('/newscontent',[HomeController::class,'newscontent'])->name('newscont
 Route::get('/announcementscontent',[HomeController::class,'announcementscontent'])->name('announcementscontent');
 Route::get('/contentdetail/{id}',[HomeController::class,'contentdetail'])->name('contentdetail');
 Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmessage');
-Route::get('/contentslider/{id}',[HomeController::class,'contentslider'])->name('content');
+Route::get('/contentslider/{id}',[HomeController::class,'contentslider'])->name('contentslider');
 Route::post('/getcontent',[HomeController::class,'getcontent'])->name('getcontent');
 Route::get('/contentlist/{search}',[HomeController::class,'contentlist'])->name('contentlist');
 
@@ -40,11 +41,21 @@ Route::get('/contentlist/{search}',[HomeController::class,'contentlist'])->name(
 
 
 
-
 //Home User
-Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
-    Route::get('/',[UserController::class,'index'])->name('myprofile');
-});
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+    Route::get('/',[UserController::class,'index'])->name('userprofile');
+
+        Route::prefix('faq')->group(function (){
+            Route::get('/',[\App\Http\Controllers\FaqController::class,'index'])->name('user_faq');
+            Route::get('create',[\App\Http\Controllers\FaqController::class,'create'])->name('user_faq_add');
+            Route::post('store',[\App\Http\Controllers\FaqController::class,'store'])->name('user_faq_store');
+            Route::get('edit/{id}',[\App\Http\Controllers\FaqController::class,'edit'])->name('user_faq_edit');
+            Route::post('update/{id}',[\App\Http\Controllers\FaqController::class,'update'])->name('user_faq_update');
+            Route::get('delete/{id}',[\App\Http\Controllers\FaqController::class,'destroy'])->name('user_faq_delete');
+            Route::get('show',[\App\Http\Controllers\FaqController::class,'show'])->name('user_faq_show');
+        });
+
+    });
 
 
 // Admin
@@ -78,6 +89,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[MessageController::class,'show'])->name('admin_message_show');
     });
 
+ //REVIEW
+    Route::prefix('review')->group(function(){
+        Route::get('/',[ReviewController::class,'index'])->name('admin_review');
+        Route::post('update/{id}',[ReviewController::class,'update'])->name('admin_review_update');
+        Route::get('delete/{id}',[ReviewController::class,'destroy'])->name('admin_review_delete');
+        Route::get('show/{id}',[ReviewController::class,'show'])->name('admin_review_show');
+    });
+
 //content IMAGE GALLERY
     Route::prefix('image')->group(function (){
         Route::get('create/{content_id}',[\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
@@ -102,6 +121,13 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
     });
 
+});
+
+//User Reviews
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
+    Route::get('/',[UserController::class,'index'])->name('myprofile');
+    Route::get('/myreviews',[UserController::class,'myreviews'])->name('myreviews');
+    Route::get('/destroymyreview/{id}',[UserController::class,'destroymyreview'])->name('user_review_delete');
 });
 
 

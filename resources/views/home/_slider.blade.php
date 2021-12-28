@@ -10,7 +10,7 @@
              <div class="container">
                  <div class="row align-items-center">
                      <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                             <a href="{{route('content',['id'=>$rs->id])}}"><h1>{{$rs->title}}</h1></a>
+                             <a href="<a href="{{route('contentdetail',['id'=>$rs->id])}}" target="_blank"><h1>{{$rs->title}}</h1></a>
                     </div>
                  </div>
              </div>
