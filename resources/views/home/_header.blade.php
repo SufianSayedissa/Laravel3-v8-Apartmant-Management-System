@@ -45,9 +45,11 @@
                             <a href="/login" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
                             <a href="/register" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
                         @endguest
+
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{route('userprofile')}}">My Account</a>
                             <a class="dropdown-item" href="#">My Requests</a>
+                            <a class="dropdown-item" href="#">My Reviews</a>
                             <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>

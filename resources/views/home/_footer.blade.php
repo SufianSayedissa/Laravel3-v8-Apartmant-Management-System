@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
+                <p>“Renkli ve mutlu bir yaşama ilk adım” sloganıyla hayata geçirilen Yılmaz Residence.</p>
                 <p><a href="#">Learn More</a></p>
             </div>
 
@@ -39,7 +39,7 @@
                 <p>
 
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
-                    {{$setting->company}}
+                    {{$setting->company}} Company
                 </p>
                 </div>
             </div>

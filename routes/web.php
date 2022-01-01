@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
+//use App\Http\Controllers\Admin\RequestsController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,15 +47,15 @@ Route::get('/contentlist/{search}',[HomeController::class,'contentlist'])->name(
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('userprofile');
 
-        Route::prefix('faq')->group(function (){
-            Route::get('/',[\App\Http\Controllers\FaqController::class,'index'])->name('user_faq');
-            Route::get('create',[\App\Http\Controllers\FaqController::class,'create'])->name('user_faq_add');
-            Route::post('store',[\App\Http\Controllers\FaqController::class,'store'])->name('user_faq_store');
-            Route::get('edit/{id}',[\App\Http\Controllers\FaqController::class,'edit'])->name('user_faq_edit');
-            Route::post('update/{id}',[\App\Http\Controllers\FaqController::class,'update'])->name('user_faq_update');
-            Route::get('delete/{id}',[\App\Http\Controllers\FaqController::class,'destroy'])->name('user_faq_delete');
-            Route::get('show',[\App\Http\Controllers\FaqController::class,'show'])->name('user_faq_show');
-        });
+    Route::prefix('requests')->group(function (){
+        Route::get('/',[RequestsController::class,'index'])->name('user_requests');
+        Route::get('create',[RequestsController::class,'create'])->name('user_requests_add');
+        Route::post('store',[RequestsController::class,'store'])->name('user_requests_store');
+        Route::get('edit/{id}',[RequestsController::class,'edit'])->name('user_requests_edit');
+        Route::post('update/{id}',[RequestsController::class,'update'])->name('user_requests_update');
+        Route::get('delete/{id}',[RequestsController::class,'destroy'])->name('user_requests_delete');
+        Route::get('show',[RequestsController::class,'show'])->name('user_requests_show');
+    });
 
     });
 
@@ -89,6 +91,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[MessageController::class,'show'])->name('admin_message_show');
     });
 
+
  //REVIEW
     Route::prefix('review')->group(function(){
         Route::get('/',[ReviewController::class,'index'])->name('admin_review');
@@ -96,6 +99,16 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('delete/{id}',[ReviewController::class,'destroy'])->name('admin_review_delete');
         Route::get('show/{id}',[ReviewController::class,'show'])->name('admin_review_show');
     });
+
+    //REQUESTS
+    Route::prefix('requests')->group(function (){
+        Route::get('/',[\App\Http\Controllers\Admin\RequestsController::class,'index'])->name('admin_requests');
+        Route::get('edit/{id}',[\App\Http\Controllers\Admin\RequestsController::class,'edit'])->name('admin_requests_edit');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\RequestsController::class,'update'])->name('admin_requests_update');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\RequestsController::class,'destroy'])->name('admin_requests_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\RequestsController::class,'show'])->name('admin_requests_show');
+    });
+
 
 //content IMAGE GALLERY
     Route::prefix('image')->group(function (){
@@ -128,7 +141,9 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
     Route::get('/',[UserController::class,'index'])->name('myprofile');
     Route::get('/myreviews',[UserController::class,'myreviews'])->name('myreviews');
     Route::get('/destroymyreview/{id}',[UserController::class,'destroymyreview'])->name('user_review_delete');
+
 });
+
 
 
 

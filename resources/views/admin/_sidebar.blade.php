@@ -33,6 +33,8 @@
                     </li>
                     <li><a href="{{route('admin_message')}}"><i class="fa fa-send"></i> Contact Messages</a>
                     </li>
+                    <li><a href="{{route('admin_requests')}}"><i class="fa fa-send"></i>Requests</a>
+                    </li>
                     <li><a href="{{route('admin_review')}}"><i class="fa fa-send"></i>Reviews</a>
                     </li>
                     <li><a href="{{route('admin_faq')}}"><i class="fa fa-send"></i>FAQ</a>

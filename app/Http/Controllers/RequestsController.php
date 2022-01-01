@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
 use App\Models\Menu;
+use App\Models\Requests;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FaqController extends Controller
+class RequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class FaqController extends Controller
     {
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        $datalist = Faq::where('user_id',Auth::id())->get();
-        return view('home.user_faq',['datalist'=>$datalist,'menus'=>$menus,'setting'=>$setting]);
+        $datalist= Requests::where('user_id','=',Auth::user()->id)->get();
+        return view('home.user_requests',['datalist'=>$datalist,'menus'=>$menus,'setting'=>$setting]);
     }
 
     /**
@@ -32,7 +32,7 @@ class FaqController extends Controller
     {
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        return view('home.user_faq_add',['menus'=>$menus,'setting'=>$setting]);
+        return view('home.user_requests_add',['menus'=>$menus,'setting'=>$setting]);
     }
 
     /**
@@ -43,22 +43,26 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-
-        $data = new Faq;
-        $data->question = $request->input('question');
-        $data->answer = $request->input('answer');
+        $data = new Requests;
+        $data->type = $request->input('type');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->user_id = Auth::id();
+        $data->adminnote = $request->input('adminnote');
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->route('user_faq')->with('success','FAQ Added Successfully');
+        return redirect()->route('user_requests');
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Requests  $requests
      * @return \Illuminate\Http\Response
      */
-    public function show(Faq $faq)
+    public function show(Requests $requests)
     {
         //
     }
@@ -66,45 +70,47 @@ class FaqController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Requests  $requests
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faq $faq,$id)
+    public function edit(Requests $requests,$id)
     {
+        $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        $data =Faq::find($id);
-        return view('home.user_faq_edit',['data'=>$data,'menus'=>$menus]);
+        $data = Requests::find($id);
+        return view('home.user_requests_edit',['data'=>$data,'menus'=>$menus,'setting'=>$setting]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Requests  $requests
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq,$id)
+    public function update(Request $request, Requests $requests,$id)
     {
-
-        $data =Faq::find($id);
-        $data->question = $request->input('question');
-        $data->answer = $request->input('answer');
+        $data = Requests::find($id);
+        $data->type = $request->input('type');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->user_id = Auth::id();
+        $data->adminnote = $request->input('adminnote');
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->route('user_faq')->with('success','Faq Updated Successfully');
+        return redirect()->route('user_requests');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Requests  $requests
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq,$id)
+    public function destroy(Requests $requests,$id)
     {
-
-        $data =Faq::find($id);
+        $data = Requests::find($id);
         $data->delete();
-        return redirect()->route('user_faq')->with('success','Faq Deleted Successfully');
+        return redirect()->route('user_requests')->with('success','Request Deleted');
     }
 }
