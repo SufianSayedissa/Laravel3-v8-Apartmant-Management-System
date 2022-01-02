@@ -34,6 +34,7 @@
                 <form action="{{route('admin_logincheck')}}" method="post">
                     @csrf
                     <h1>Login Form</h1>
+                    @include('home.message')
                     <div>
                         <input id="email" type="email" name="email" class="form-control" placeholder="Email" required="" />
                     </div>

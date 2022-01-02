@@ -63,6 +63,9 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function () 
 // Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
 
+    //Admin Role
+    Route::middleware('admin')->group(function (){
+
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin_home');
 //MENU
     Route::get('menu', [\App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin_menu');
@@ -124,17 +127,17 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 
     //FAQ
-    Route::prefix('faq')->group(function (){
-        Route::get('/',[FaqController::class,'index'])->name('admin_faq');
-        Route::get('create',[FaqController::class,'create'])->name('admin_faq_add');
-        Route::post('store',[FaqController::class,'store'])->name('admin_faq_store');
-        Route::get('edit/{id}',[FaqController::class,'edit'])->name('admin_faq_edit');
-        Route::post('update/{id}',[FaqController::class,'update'])->name('admin_faq_update');
-        Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
-        Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
-    });
-
-});
+        Route::prefix('faq')->group(function (){
+            Route::get('/',[FaqController::class,'index'])->name('admin_faq');
+            Route::get('create',[FaqController::class,'create'])->name('admin_faq_add');
+            Route::post('store',[FaqController::class,'store'])->name('admin_faq_store');
+            Route::get('edit/{id}',[FaqController::class,'edit'])->name('admin_faq_edit');
+            Route::post('update/{id}',[FaqController::class,'update'])->name('admin_faq_update');
+            Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
+            Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
+         });
+    });//Admin
+});//Auth
 
 //User Reviews
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
