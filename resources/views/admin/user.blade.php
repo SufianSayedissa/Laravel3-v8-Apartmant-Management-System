@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Requests')
-@section('description','Requests List')
+@section('title','Users')
+@section('description','Users List')
 @section('keywords','')
 
 
@@ -9,7 +9,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Requests</h3>
+                    <h3>Users </h3>
                 </div>
 
                 <div class="title_right">
@@ -23,22 +23,23 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-
-                        @include('home.message')
+                     @include('home.message')
                         <br>
                         <div class="x_panel">
                             <div class="x_content">
-
+                                <h2 class="section-title-underline mb-5">
+                                    <span>All Users</span>
+                                </h2>
                                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>User Name</th>
-                                        <th>Type</th>
-                                        <th>Subject</th>
-                                        <th>Message</th>
-                                        <th>Admin Note</th>
-                                        <th>Status</th>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Roles</th>
                                         <th style="..."colspan="2">Actions</th>
 
                                     </tr>
@@ -48,19 +49,26 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td>
-                                            <a href="{{route('admin_user_show',['id'=>$rs->user->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')">
-                                                {{$rs->user->name}}</a>
+                                            @if($rs->profile_photo_path)
+                                                <img src="{{Storage::url($rs->profile_photo_path)}}" height="50" style="border-radius: 10px"alt="">
+                                            @endif
                                         </td>
-                                        <td>{{$rs->type}}</td>
-                                        <td>{{$rs->subject}}</td>
-                                        <td>{!!$rs->message!!}</td>
-                                        <td>{{$rs->adminnote}}</td>
-                                        <td>{{$rs->status}}</td>
-                                        <td>
-                                            <a href="{{route('admin_requests_edit',['id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')">
-                                                <center><img src="{{asset('assets')}}/admin/images/edit.png"height="40" width="40"></center></a>
+                                        <td>{{$rs->name}}</td>
+                                        <td>{{$rs->email}}</td>
+                                        <td>{{$rs->phone}}</td>
+                                        <td>{{$rs->address}}</td>
+                                        <td>@foreach($rs->roles as $row)
+                                                 {{$row->name}},
+                                            @endforeach
                                         </td>
-                                        <td><a href="{{route('admin_requests_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
+                                        </td>
+                                        <a href="{{route('admin_user_roles', ['id'=>$rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=800, height=600')">
+                                            <i class="nav-icon fa fa-plus-circle"></i>
+                                        </a>
+                                        </td>
+                                        <td><a href="{{route('admin_user_edit', ['id'=>$rs->id])}}">
+                                                <center><img src="{{asset('assets')}}/admin/images/edit.png" height="25"width="25"></center></a></td>
+                                        <td><a href="{{route('admin_user_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')"><center><img src="{{asset('assets')}}/admin/images/trash.png" height="25"width="25"></center></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>
