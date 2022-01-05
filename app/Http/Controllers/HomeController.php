@@ -150,6 +150,16 @@ class HomeController extends Controller
         return view('home.indoor_facilities',['setting' => $setting,'menus' => $menus,'data'=>$data]);
     }
 
+
+    public function General_Rules()
+    {
+        $data = Content::select('id','type','title','menu_id','details','image','updated_at','keywords','description')->where('status','True')
+            ->where('menu_id','38')->get();
+        $setting = Setting::first();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.general_residence_rules',['setting' => $setting,'menus' => $menus,'data'=>$data]);
+    }
+
     public function faq()
     {
         $setting = Setting::first();
