@@ -11,15 +11,7 @@
                 <div class="title_left">
                     <h3>Content </h3>
                 </div>
-
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    </div>
-                </div>
             </div>
-
-            <div class="clearfix"></div>
-
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -27,11 +19,13 @@
                             <a href="{{route('admin_content_add')}}"><button type="button" class="btn btn-success btn-lg">Add Content</button></a>
                         </div>
                         <br>
-                        <div class="x_panel">
+
                             <div class="x_content">
                                 <h2 class="section-title-underline mb-5">
-                                    <span>All News</span>
+                                    <span>All Content</span>
                                 </h2>
+                                <div class="clearfix"></div>
+                                <div class="table-responsive">
                                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
@@ -73,8 +67,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

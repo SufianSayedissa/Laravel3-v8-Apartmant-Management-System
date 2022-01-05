@@ -42,7 +42,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
-        $slider = Content::select('id','title','image')->limit(4)->get();
+        $slider = Content::select('id','type','title','image','updated_at')->where('type','News')->where('status','True')->orderByDesc('updated_at')->limit(4)->get();
         $news = Content::select('id','type','title','image','keywords','description')->where('type','News')->where('status','True')->get();
         $lastannouncements = Content::select('id','type','title','description','image','updated_at')->where('type','Announcements')->where('status','True')->orderByDesc('updated_at')->limit(1)->get();
         $dailyannouncements =Content::select('id','type','title','description','image','updated_at')->where('type','Announcements')->where('status','True')->limit(5)->get();
@@ -131,6 +131,23 @@ class HomeController extends Controller
         $setting = Setting::first();
         $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
         return view('home.aboutus', ['setting' => $setting,'menus' => $menus]);
+    }
+
+
+    public function Outdoor()
+    {
+        $data = Content::select('id','type','title','menu_id','details','image','updated_at','keywords','description')->where('status','True')->where('menu_id','36')->get();
+        $setting = Setting::first();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.outdoor_facilities',['setting' => $setting,'menus' => $menus,'data'=>$data]);
+    }
+
+    public function Indoor()
+    {
+        $data = Content::select('id','type','title','menu_id','details','image','updated_at','keywords','description')->where('status','True')->where('menu_id','37')->get();
+        $setting = Setting::first();
+        $menus = Menu::where('parent_id', '=', 0)->with('children')->get();
+        return view('home.indoor_facilities',['setting' => $setting,'menus' => $menus,'data'=>$data]);
     }
 
     public function faq()

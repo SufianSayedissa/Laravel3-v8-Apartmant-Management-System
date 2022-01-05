@@ -16,7 +16,7 @@
                             <a href="#" class="nav-link text-left">{{$rs->title}}</a>
                             <ul class="dropdown" aria-expanded="true">
                                 @foreach($rs->children as $rs)
-                                <li><a href="#">{{$rs->title}}</a></li>
+                                <li><a href="{{route($rs->title)}}">{{$rs->title}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -48,8 +48,8 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{route('userprofile')}}">My Account</a>
-                            <a class="dropdown-item" href="#">My Requests</a>
-                            <a class="dropdown-item" href="#">My Reviews</a>
+                            <a class="dropdown-item" href="{{route('myreviews')}}">My Reviews</a>
+                            <a class="dropdown-item" href="{{route('user_requests')}}">My Requests</a>
                             <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>

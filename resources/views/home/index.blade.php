@@ -75,7 +75,7 @@
                     <div class="col-lg-6 mb-5">
                         <h2 class="section-title-underline mb-3">
                             <span>Announcements</span></h2>
-                        <a href="{{route('announcements')}}"target="_blank">See All Announcements</a>
+                        <a href="{{route('announcementscontent')}}"target="_blank">See All Announcements</a>
                     </div>
                     <div class="row">
                         @foreach( $lastannouncements as $rs)
@@ -121,100 +121,6 @@
     </div>
     <!--End Of Announcements -->
 
-    <!--Comments -->
-    <div class="site-section">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-4">
-                    <h2 class="section-title-underline">
-                        <span>Comments</span>
-                    </h2>
-                </div>
-            </div>
-            <div class="owl-slide owl-carousel">
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_1.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                    </div>
-                </div>
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_2.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                    </div>
-                </div>
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_4.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                    </div>
-                </div>
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_3.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                    </div>
-                </div>
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_2.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                    </div>
-                </div>
-
-                <div class="ftco-testimonial-1">
-                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                        <img src="{{asset('assets')}}/images/person_4.jpg" alt="Image" class="img-fluid mr-3">
-                        <div>
-                            <h3>Allison Holmes</h3>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 
 
 @endsection

@@ -33,6 +33,7 @@
                                 <h2 class="section-title-underline mb-5">
                                     <span>Frequently Asked Question</span>
                                 </h2>
+                                <div class="table-responsive">
                                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
@@ -58,6 +59,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>

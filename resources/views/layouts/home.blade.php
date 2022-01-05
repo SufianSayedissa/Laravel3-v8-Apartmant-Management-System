@@ -13,6 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets')}}/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/fonts/font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{asset('assets')}}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('assets')}}/css/jquery-ui.css">
@@ -36,32 +37,36 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap">
 
-<div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
             </div>
+            <div class="site-mobile-menu-body"></div>
         </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
 </div>
-<div class="site-logo">
-    <a href="{{route('home')}}" class="d-block">
-        <img src="{{asset('assets')}}/images/logo41.jpg" height="180"width="250" alt="Image" class="img-fluid">
-    </a>
-</div>
+
 <!-- Search -->
+    <div class="py-2 bg-light">
+        <div class="container">
+            <div class="site-logo">
+                <a href="{{route('home')}}" class="d-block">
+                    <img src="{{asset('assets')}}/images/logo.jpg" height="180"width="250" alt="Image" class="img-fluid">
+                </a>
+            </div>
 <div class="form-search">
     <form action="{{route('getcontent')}}" method="post">
         @csrf
         @livewire('search')
-        <button type="submit" ><i class="fa fa-search"></i></button>
+        <button type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
     </form>
     @livewireScripts
 </div>
+        </div>
+    </div>
 <!-- End Of Search -->
 
 @include('home._header')

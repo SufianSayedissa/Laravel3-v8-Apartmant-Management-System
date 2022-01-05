@@ -17,7 +17,7 @@
                      <div class="col-lg-4 col-md-6 mb-4">
                          <div class="course-1-item">
                              <figure class="thumnail">
-                                 <a href="course-single.html">
+                                 <a href="{{route('contentdetail',['id'=>$rs->id])}}" target="_blank">
                                      <img src="{{Storage::url($rs->image)}}" style="height:300px;width: 800px"alt="Image" class="img-fluid">
                                  </a>
                                  <div class="price">{{$rs->updated_at}}</div>
@@ -26,7 +26,7 @@
                              <div class="course-1-content pb-4">
                                  <h2>{{$rs->keywords}}</h2>
                                  <p class="desc mb-4">{{$rs->description}}</p>
-                                 <p><a href="#" class="btn btn-primary rounded-0 px-4">Read More</a></p>
+                                 <p><a href="{{route('contentdetail',['id'=>$rs->id])}}" target="_blank" class="btn btn-primary rounded-0 px-4">Read More</a></p>
                              </div>
                          </div>
                      </div>

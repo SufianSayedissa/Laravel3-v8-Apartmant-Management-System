@@ -39,11 +39,11 @@
 
                              @endphp
                             <div class="rating text-center mb-3">
-                            <i class="fa fa-star @if($averageview<1)-o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<2)-o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<3)-o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<4)-o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<5)-o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<1) -o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<2)  -o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<3) -o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<4) -o  empty @endif"></i>
+                            <i class="fa fa-star @if($averageview<5) -o  empty @endif"></i>
                              </div>
                             <a href="#">{{$counterview}}Review(s)-{{$averageview}}</a>
                         </div>
@@ -80,6 +80,7 @@
         <div class="col-md-6">
             <h2 class="section-title-underline mb-5"><span>Write A Review</span></h2>
                 @livewire('review',['id'=>$data->id])
+
         </div>
         </div>
     </div>

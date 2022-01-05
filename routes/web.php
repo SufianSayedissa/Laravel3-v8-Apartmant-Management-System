@@ -29,6 +29,10 @@ Route::get('/home',[HomeController::class,'index'])->name('homepage');
 Route::get('/content',[HomeController::class,'content'])->name('content');
 Route::get('/announcements',[HomeController::class,'announcements'])->name('announcements');
 Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
+//Facilities
+Route::get('/Outdoor',[HomeController::class,'Outdoor'])->name('Outdoor');
+Route::get('/Indoor',[HomeController::class,'Indoor'])->name('Indoor');
+//End Of Facilities
 Route::get('/faq',[HomeController::class,'faq'])->name('faq');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/newscontent',[HomeController::class,'newscontent'])->name('newscontent');
