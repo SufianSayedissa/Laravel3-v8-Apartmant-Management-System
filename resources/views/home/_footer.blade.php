@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <p class="mb-4"><img src="{{asset('assets')}}/images/logo.png" height="150"width="230" alt="Image" class="img-fluid"></p>
+                <p class="mb-4"><img src="{{asset('assets')}}/images/logo.png" height="100"width="130" alt="Image" ></p>
                 <p>“Renkli ve mutlu bir yaşama ilk adım” sloganıyla hayata geçirilen Yılmaz Residence.</p>
                 <p><a href="#">Learn More</a></p>
             </div>
@@ -46,6 +46,7 @@
         </div>
     </div>
 </div>
+
 <!-- END OF FOOTER     -->
 
 </div>
