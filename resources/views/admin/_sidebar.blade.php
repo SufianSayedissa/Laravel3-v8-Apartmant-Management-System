@@ -15,7 +15,7 @@
             </div>
             <div class="profile_info">
                @auth
-                    <a href="#">{{Auth::user()->name}} </a>
+                    <h5>Welcome<br>{{Auth::user()->name}} </h5>
                     <a href="{{route('logout')}}">Logout</a>
                 @endauth
             </div>

@@ -61,10 +61,9 @@
                                         <td>@foreach($rs->roles as $row)
                                                  {{$row->name}},
                                             @endforeach
-                                        </td>
-                                        </td>
+
                                         <a href="{{route('admin_user_roles', ['id'=>$rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=800, height=600')">
-                                            <i class="nav-icon fa fa-plus-circle"></i>
+                                            <i class="nav-icon fa fa-plus-circle fa-lg"></i>
                                         </a>
                                         </td>
                                         <td><a href="{{route('admin_user_edit', ['id'=>$rs->id])}}">

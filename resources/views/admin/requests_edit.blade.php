@@ -30,20 +30,21 @@
                 <th>Subject</th><td>{{$data->subject}}</td>
             </tr>
             <tr>
-                <th>Message</th><td>{{$data->message}}</td>
+                <th>Message</th><td>{!!$data->message!!}</td>
             </tr>
             <tr>
                 <th>User Name</th><td>{{$data->user->name}}</td>
             </tr>
             <tr>
-                <th>Admin Note</th><td>{{$data->adminnote}}
-                    <textarea name="note" id="note" ></textarea></td>
+                <th>Admin Note</th><td>
+                    <textarea name="adminnote" id="adminnote" >{{$data->adminnote}}</textarea></td>
             </tr>
             <tr>
-                <td></td><td>
-                    <div class="form-group">
+                <td></td>
+                <td>
+
                         <button type="submit" class="btn btn-success">Update Request</button>
-                    </div>
+
                 </td>
             </tr>
 

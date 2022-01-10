@@ -50,22 +50,19 @@
 
 
 <!-- Search -->
-    <div class="py-2 bg-light">
-        <div class="container">
-            <div class="site-logo">
-                <a href="{{route('home')}}" class="d-block">
-                    <img src="{{asset('assets')}}/images/logo.png" height="150"width="230" alt="Image" class="img-fluid">
-                </a>
-            </div>
-<div class="form-search">
-    <form action="{{route('getcontent')}}" method="post">
-        @csrf
-        @livewire('search')
-        <button type="submit" ><i class="fa fa-search"></i></button>
-    </form>
-    @livewireScripts
-</div>
-        </div>
+{{--        <div class="site-logo">--}}
+{{--                <a href="{{route('home')}}"><img src="{{asset('assets')}}/images/logo.png" height="150"width="230" alt="Image" class="img-fluid">--}}
+{{--                </a>--}}
+{{--        </div>--}}
+{{--<div class="form-search">--}}
+{{--    <form action="{{route('getcontent')}}" method="post">--}}
+{{--        @csrf--}}
+{{--        @livewire('search')--}}
+{{--        <button type="submit" ><i class="fa fa-search"></i></button>--}}
+{{--    </form>--}}
+{{--    @livewireScripts--}}
+{{--</div>--}}
+
     </div>
 <!-- End Of Search -->
 

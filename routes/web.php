@@ -33,11 +33,9 @@ Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/Outdoor',[HomeController::class,'Outdoor'])->name('Outdoor');
 Route::get('/Indoor',[HomeController::class,'Indoor'])->name('Indoor');
 //End Of Facilities
-
 //Residence Rules
 Route::get('/General_Rules',[HomeController::class,'General_Rules'])->name('General_Rules');
 //End Of Residence Rules
-
 Route::get('/faq',[HomeController::class,'faq'])->name('faq');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/newscontent',[HomeController::class,'newscontent'])->name('newscontent');

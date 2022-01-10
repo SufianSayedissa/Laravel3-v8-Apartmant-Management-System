@@ -62,6 +62,7 @@ class RequestsController extends Controller
     {
         $data = Requests::find($id);
         $data->status = 'read';
+        $data->save();
         return view('admin.requests_edit',['data'=>$data]);
     }
 
