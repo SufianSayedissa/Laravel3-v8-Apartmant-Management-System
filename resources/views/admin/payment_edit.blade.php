@@ -14,36 +14,48 @@
 <link href="{{asset('assets')}}/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
 <div class="x_content">
-    <h3 class="card-title">Request Details</h3>
+    <h3 class="card-title">Payment Details</h3>
     @include('home.message')
     <br>
-    <form class="form-horizontal" action="{{route('admin_requests_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="{{route('admin_payment_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
         @csrf
         <table class="table table-bordered table-striped">
             <tr>
                 <th>Id</th><td>{{$data->id}}</td>
             </tr>
             <tr>
-                <th>Type</th><td>{{$data->type}}</td>
+                <th>Year</th><td>{{$data->year}}</td>
             </tr>
             <tr>
-                <th>Subject</th><td>{{$data->subject}}</td>
+                <th>Month</th><td>{{$data->month}}</td>
             </tr>
             <tr>
-                <th>Message</th><td>{!!$data->message!!}</td>
+                <th>Payment</th><td>{{$data->payment}}</td>
             </tr>
             <tr>
                 <th>User Name</th><td>{{$data->user->name}}</td>
             </tr>
             <tr>
                 <th>Admin Note</th><td>
-                    <textarea name="adminnote" id="adminnote" >{{$data->adminnote}}</textarea></td>
+                    <textarea name="note" id="note" >{{$data->note}}</textarea></td>
             </tr>
             <tr>
                 <td></td>
+
+            <tr>
+                <th>Status</th><td>
+                    <select id="status" name="status">
+                        <option selected="selected">{{$data->status}}</option>
+                        <option>Accepted</option>
+                        <option>Rejected</option>
+                    </select>
+            </tr>
+            <tr>
+                <td></td>
+
                 <td>
 
-                        <button type="submit" class="btn btn-success">Update Request</button>
+                        <button type="submit" class="btn btn-success">Update Payment</button>
 
                 </td>
             </tr>

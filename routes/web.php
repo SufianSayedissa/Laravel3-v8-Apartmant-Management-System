@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\MessageController;
 //use App\Http\Controllers\Admin\RequestsController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +54,7 @@ Route::get('/contentlist/{search}',[HomeController::class,'contentlist'])->name(
 //Home User
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('userprofile');
-
+//REQUESTS
     Route::prefix('requests')->group(function (){
         Route::get('/',[RequestsController::class,'index'])->name('user_requests');
         Route::get('create',[RequestsController::class,'create'])->name('user_requests_add');
@@ -62,6 +63,13 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function () 
         Route::post('update/{id}',[RequestsController::class,'update'])->name('user_requests_update');
         Route::get('delete/{id}',[RequestsController::class,'destroy'])->name('user_requests_delete');
         Route::get('show',[RequestsController::class,'show'])->name('user_requests_show');
+    });
+//PAYMENTS
+    Route::prefix('payments')->group(function (){
+        Route::get('/',[PaymentController::class,'index'])->name('user_payments');
+        Route::get('create',[PaymentController::class,'create'])->name('user_payment_add');
+        Route::post('store',[PaymentController::class,'store'])->name('user_payment_store');
+        Route::get('show',[PaymentController::class,'show'])->name('user_payment_show');
     });
 
     });
@@ -118,6 +126,16 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\RequestsController::class,'destroy'])->name('admin_requests_delete');
         Route::get('show',[\App\Http\Controllers\Admin\RequestsController::class,'show'])->name('admin_requests_show');
     });
+
+        //PAYMENTS
+        Route::prefix('payments')->group(function (){
+            Route::get('/',[\App\Http\Controllers\Admin\PaymentController::class,'index'])->name('admin_payments');
+            Route::get('edit/{id}',[\App\Http\Controllers\Admin\PaymentController::class,'edit'])->name('admin_payment_edit');
+            Route::post('update/{id}',[\App\Http\Controllers\Admin\PaymentController::class,'update'])->name('admin_payment_update');
+            Route::get('delete/{id}',[\App\Http\Controllers\Admin\PaymentController::class,'destroy'])->name('admin_payment_delete');
+            Route::get('show',[\App\Http\Controllers\Admin\PaymentController::class,'show'])->name('admin_payment_show');
+        });
+
 //USERS
         Route::prefix('user')->group(function (){
             Route::get('/',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('admin_users');

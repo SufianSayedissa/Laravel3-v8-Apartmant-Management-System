@@ -37,6 +37,8 @@
                     </li>
                     <li><a href="{{route('admin_requests')}}"><i class="fa fa-wrench"></i>Requests</a>
                     </li>
+                    <li><a href="{{route('admin_payments')}}"><i class="fa fa-money"></i>Payments</a>
+                    </li>
                     <li><a href="{{route('admin_review')}}"><i class="fa fa-commenting"></i>Reviews</a>
                     </li>
                     <li><a href="{{route('admin_faq')}}"><i class="fa fa-question"></i>FAQ</a>

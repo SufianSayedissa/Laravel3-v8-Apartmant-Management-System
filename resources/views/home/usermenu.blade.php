@@ -7,6 +7,7 @@
         <li><a href="{{route('userprofile')}}">My Account</a></li>
         <li><a href="{{route('myreviews')}}">My Reviews</a></li>
         <li><a href="{{route('user_requests')}}">My Requests</a></li>
+        <li><a href="{{route('user_payments')}}">My Payments</a></li>
         <li><a href="{{route('logout')}}">Logout</a></li>
         @php
          $userRoles = Auth::user()->roles->pluck('name');

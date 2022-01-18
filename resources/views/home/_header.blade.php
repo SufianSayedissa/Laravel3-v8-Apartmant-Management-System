@@ -69,6 +69,7 @@
                             <a class="dropdown-item" href="{{route('userprofile')}}">My Account</a>
                             <a class="dropdown-item" href="{{route('myreviews')}}">My Reviews</a>
                             <a class="dropdown-item" href="{{route('user_requests')}}">My Requests</a>
+                            <a class="dropdown-item" href="{{route('user_payments')}}">My Payments</a>
                             <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>
