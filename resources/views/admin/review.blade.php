@@ -53,12 +53,12 @@
                                         </td>
                                         <td>{{$rs->content->title}}</td>
                                         <td>{{$rs->comment}}</td>
-                                        <td>{{$rs->rate}}</td>
+                                        <td>{{$rs->rate}}/5</td>
                                         <td>{{$rs->status}}</td>
                                         <td>{{$rs->created_at}}</td>
                                         <td>
                                             <a href="{{route('admin_review_show',['id'=>$rs->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')">
-                                                <center><img src="{{asset('assets')}}/admin/images/edit.png"height="40" width="40"></center></a>
+                                                <center><img src="{{asset('assets')}}/admin/images/edit.png"height="25" width="25"></center></a>
                                         </td>
                                         <td>
                                             <a href="{{route('admin_review_delete', ['id'=>$rs->id])}}" onclick="return confirm('Are You Sure You Want To Delete?!')">
