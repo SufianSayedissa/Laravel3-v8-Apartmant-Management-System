@@ -106,15 +106,18 @@ class HomeController extends Controller
     public function getcontent(Request $request)
     {
         $search =$request->input('search');
-        $count=Content::where('title','like','%'.$search.'%')->get()->count();
-        if ($count==1)
-        {
-        $data = Content::where('title',$request->input('search'))->first();
-        return redirect()->route('contentdetail',['id'=>$data->id]);
+        if ($search !== null) {
+            $count = Content::where('title', 'like', '%' . $search . '%')->get()->count();
+            if ($count == 1) {
+                $data = Content::where('title', $request->input('search'))->first();
+                return redirect()->route('contentdetail', ['id' => $data->id]);
+            } else {
+                return redirect()->route('contentlist', ['search' => $search]);
+            }
         }
         else
         {
-            return redirect()->route('contentlist',['search'=>$search]);
+           return redirect()->route('home');
         }
     }
 

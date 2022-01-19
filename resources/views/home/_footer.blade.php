@@ -23,8 +23,8 @@
                                 @if($setting->twitter !=null)<a href="{{$setting->twitter}}"target="_blank"><span class="icon-twitter"></span></a>@endif
                                 @if($setting->instagram !=null)<a href="{{$setting->instagram}}"target="_blank"><span class="icon-instagram"></span></a>@endif
 
-                                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                                        class="icon-menu h3"></span></a>
+{{--                                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span--}}
+{{--                                        class="icon-menu h3"></span></a>--}}
                             </div>
                         </div>
                     </li>

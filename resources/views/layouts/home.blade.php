@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
 
 
-
+    <script tpye="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets')}}/fonts/icomoon/style.css">
     <link rel="stylesheet" href="{{asset('assets')}}/fonts/font-awesome/css/font-awesome.min.css">

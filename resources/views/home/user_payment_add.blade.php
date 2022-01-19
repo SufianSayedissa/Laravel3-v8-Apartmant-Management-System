@@ -42,21 +42,30 @@
                                              @csrf
                                              <div class="form-group">
                                                  <label>Year</label>
-                                                 <input type="year" id="year" name="year"
-                                                        min="2021" value="2022">
+                                                 <select name="year" class="form-control">
+                                                     <option>choose year</option>
+                                                     <option>2022</option>
+                                                 </select>
+
                                              </div>
                                              <div class="form-group">
                                                  <label>Month</label>
-                                                 <input type="month" id="month" name="month"
-                                                        min="2021-01" value="2022-12">
+                                                 <br>
+                                                 <input type="month" id="month" name="month" class="form-control" min="01" max="12">
                                              </div>
                                              <div class="form-group">
-                                                 <label>Payment</label>
-                                                 <input type="text" id="payment" name="payment">
+                                                 <label>Payment(Monthly)</label>
+                                                 <br>
+                                                 <input type="text" id="payment" class="form-control" name="payment"value="100" readonly>
+                                             </div>
+                                             <div class="form-group">
+                                                 <label>Total</label>
+                                                 <br>
+                                                 <input type="text" id="total" class="form-control" name="total"value="100" readonly>
                                              </div>
 
                                              <div class="form-group">
-                                                 <button type="submit" class="btn btn-success">Add Payment</button>
+                                                 <button type="submit" class="btn btn-success">Pay</button>
                                              </div>
                                          </form>
                                      </div>

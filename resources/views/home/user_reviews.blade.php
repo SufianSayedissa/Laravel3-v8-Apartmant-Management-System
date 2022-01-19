@@ -20,7 +20,6 @@
                                 <th>Content</th>
                                 <th>Comment</th>
                                 <th>Rate</th>
-                                <th>Status</th>
                                 <th>Date</th>
                                 <th style="" colspan="3">Actions</th>
                             </tr>
@@ -33,8 +32,7 @@
                                     <td><a href="{{route('content',['id'=>$rs->content->id])}}" target="_blank">
                                             {{$rs->content->title}}</a></td>
                                     <td>{{$rs->comment}}</td>
-                                    <td>{{$rs->rate}}</td>
-                                    <td>{{$rs->status}}</td>
+                                    <td>{{$rs->rate}}/5</td>
                                     <td>{{$rs->created_at}}</td>
                                     <td>
                                         <a href="{{route('user_review_delete',['id'=>$rs->id])}}" onclick="return confirm('Delete! Are You Sure')">

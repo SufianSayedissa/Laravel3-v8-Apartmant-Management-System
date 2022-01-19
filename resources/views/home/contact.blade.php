@@ -51,7 +51,8 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label>Message</label>
-                                <textarea  name="message" id="message" cols="30" rows="10" class="input"></textarea>
+                                <br>
+                                <textarea  name="message" id="message" cols="40" rows="4" class="input"></textarea>
                             </div>
                         </div>
 

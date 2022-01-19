@@ -51,7 +51,7 @@ class PaymentController extends Controller
         $data->note = $request->input('note');
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->route('user_payments');
+        return redirect()->route('user_payments')->with('success','Thanks, Waiting For Approve');;
     }
 
     /**

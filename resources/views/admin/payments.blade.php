@@ -37,6 +37,7 @@
                                         <th>Year</th>
                                         <th>Month</th>
                                         <th>Payment</th>
+                                        <th>Payment Date</th>
                                         <th>Admin Note</th>
                                         <th>Status</th>
                                         <th style="..."colspan="2">Actions</th>
@@ -54,6 +55,7 @@
                                         <td>{{$rs->year}}</td>
                                         <td>{{$rs->month}}</td>
                                         <td>{{$rs->payment}}</td>
+                                        <td>{{$rs->created_at}}</td>
                                         <td>{{$rs->note}}</td>
                                         <td>{{$rs->status}}</td>
                                         <td>
