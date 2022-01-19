@@ -42,12 +42,14 @@
 
                                     @endphp
                                 <div class="rating text-center mb-3">
-                                    <i class="fa fa-star @if($averageview<1) -o empty @endif"></i>
-                                    <i class="fa fa-star @if($averageview<2) -o empty @endif"></i>
-                                    <i class="fa fa-star @if($averageview<3) -o empty @endif"></i>
-                                    <i class="fa fa-star @if($averageview<4) -o empty @endif"></i>
-                                    <i class="fa fa-star @if($averageview<5) -o empty @endif"></i>
+                                    <i class="star star-1 @if($averageview<1)  @endif"></i>
+                                    <i class="star star-2 @if($averageview<2)  @endif"></i>
+                                    <i class="star star-3 @if($averageview<3)  @endif"></i>
+                                    <i class="star star-4 @if($averageview<4)  @endif"></i>
+                                    <i class="star star-5 @if($averageview<5)  @endif"></i>
                                     <i>({{$counterview}}) Review(s)</i>
+                                    <br>
+                                    <i>Rate(s) ({{$averageview}} /5)</i>
                                 </div>
                             </figure>
                             <div class="course-1-content pb-4">

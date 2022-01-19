@@ -39,13 +39,13 @@
 
                              @endphp
                             <div class="rating text-center mb-3">
-                            <i class="fa fa-star @if($averageview<1) -o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<2)  -o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<3) -o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<4) -o  empty @endif"></i>
-                            <i class="fa fa-star @if($averageview<5) -o  empty @endif"></i>
+                            <i class="star star-1 @if($averageview<1)  @endif"></i>
+                            <i class="star star-2 @if($averageview<2)  @endif"></i>
+                            <i class="star star-3 @if($averageview<3)  @endif"></i>
+                            <i class="star star-4 @if($averageview<4)  @endif"></i>
+                            <i class="star star-5 @if($averageview<5)  @endif"></i>
                              </div>
-                            <a href="#">{{$counterview}}Review(s)-{{$averageview}}</a>
+                            <a href="#">{{$counterview}} Review(s)- Rate(s) {{$averageview}}/5</a>
                         </div>
                         <p class="mb-5"><strong class="text-black d-block">Published Time:</strong>{{$data->updated_at}}</p>
                         <p class="mb-5"><strong class="text-black d-block">Details:</strong></p>
@@ -61,18 +61,17 @@
                     @foreach($reviews as $rs)
                         <div class="single">
                             <div class="reviewing-head">
-                                <div><a href="#"><i class="fa fa-user-o"></i>{{$rs->user?->name}}</a></div>
-                                <div><a href="#"><i class="fa fa-user-o"></i>{{$rs->created_at}}</a></div>
+                                <div><i class="fa fa-user-o"> </i> {{$rs->user?->name}}</div>
+                                <div>Date: {{$rs->created_at}}</div>
+                                <div>Rate: {{$rs->rate}}/5</div>
+                                <div>Comment: {{$rs->comment}}</div>
                                 <div class="stars" >
-                                    <i class="fa fa-star @if($rs->rate<1) -o  empty @endif"></i>
-                                    <i class="fa fa-star @if($rs->rate<2) -o  empty @endif"></i>
-                                    <i class="fa fa-star @if($rs->rate<3) -o  empty @endif"></i>
-                                    <i class="fa fa-star @if($rs->rate<4) -o  empty @endif"></i>
-                                    <i class="fa fa-star @if($rs->rate<5) -o  empty @endif"></i>
+                                    <i class="star star-1 @if($rs->rate<1)    @endif"></i>
+                                    <i class="star star-2 @if($rs->rate<2)    @endif"></i>
+                                    <i class="star star-3 @if($rs->rate<3)    @endif"></i>
+                                    <i class="star star-4 @if($rs->rate<4)    @endif"></i>
+                                    <i class="star star-5 @if($rs->rate<5)    @endif"></i>
                                 </div>
-                            </div>
-                            <div class="reviewing-body">
-                                <p>{{$rs->comment}}</p>
                             </div>
                         </div>
                     @endforeach

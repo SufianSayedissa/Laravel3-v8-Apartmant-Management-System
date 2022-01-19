@@ -1,3 +1,4 @@
+
 <div>
     @if(session()->has('message'))
         <div class="alert alert-success">
@@ -13,15 +14,22 @@
                         <div class="col-md-12 form-group">
                             @error('rate')<span class="text-danger">{{$message}}</span>@enderror
                             <label for="rate">Your Rating:</label>
+                            <br>
                             <div class="stars">
-                                <input  type="radio"  id="star5" wire:model="rate" value="5" /><label for="star5"></label>
-                                <input  type="radio"  id="star4" wire:model="rate" value="4" /><label for="star4"></label>
-                                <input  type="radio"  id="star3" wire:model="rate" value="3" /><label for="star3"></label>
-                                <input  type="radio"  id="star2" wire:model="rate" value="2" /><label for="star2"></label>
-                                <input  type="radio"  id="star1" wire:model="rate" value="1" /><label for="star1"></label>
+                                <input  class="star star-5" name="star"  type="radio"  id="star-5" wire:model="rate" value="5" />
+                                <label class="star star-5" for="star-5" ></label>
+                                <input class="star star-4" name="star" type="radio"  id="star-4" wire:model="rate" value="4" />
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" name="star" type="radio"  id="star-3" wire:model="rate" value="3" />
+                                <label class="star star-3" for="star-3"></label>
+                                <input  class="star star-2" name="star" type="radio"  id="star-2" wire:model="rate" value="2" />
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" name="star" type="radio"  id="star-1" wire:model="rate" value="1" />
+                                <label class="star star-1" for="star-1"></label>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label>Comment</label>

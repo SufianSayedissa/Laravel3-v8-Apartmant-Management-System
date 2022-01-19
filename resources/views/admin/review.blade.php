@@ -51,10 +51,7 @@
                                             <a href="{{route('admin_user_show',['id'=>$rs->user->id])}}"onclick="return !window.open(this.href,'','top=50 left=100 width=650 height=700')">
                                                 {{$rs->user->name}}</a>
                                         </td>
-                                        <td>
-                                            <a href="{{route('content',['id'=>$rs->content->id])}}" target="_blank">
-                                            {{$rs->content->title}}</a>
-                                        </td>
+                                        <td>{{$rs->content->title}}</td>
                                         <td>{{$rs->comment}}</td>
                                         <td>{{$rs->rate}}</td>
                                         <td>{{$rs->status}}</td>
